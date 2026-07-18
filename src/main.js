@@ -232,6 +232,15 @@ document.querySelector("#app").innerHTML = `
       <a href="#journal">Journal</a>
       <a href="#about">About</a>
     </nav>
+    <button class="theme-toggle" aria-label="Switch to light theme">
+      <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false">
+        <circle cx="12" cy="12" r="4.4" />
+        <path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.55 1.55M17.15 17.15l1.55 1.55M18.7 5.3l-1.55 1.55M6.85 17.15L5.3 18.7" />
+      </svg>
+      <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <path d="M20.2 14.2A8.2 8.2 0 1 1 9.8 3.8a6.6 6.6 0 0 0 10.4 10.4Z" />
+      </svg>
+    </button>
     <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span>
     </button>
@@ -304,8 +313,8 @@ function homeHTML() {
       <div class="hero__overlay">
         <h1 class="hero__headline">
           <span class="hero__kicker">Aimaura — Design and Build</span>
-          <span>Build with Purpose</span>
-          <span class="hero__headline-alt">Design with <em>aura</em></span>
+          <span>Built with Purpose</span>
+          <span class="hero__headline-alt">Designed with <em>Aura</em></span>
         </h1>
       </div>
       <button class="hero__arrow hero__arrow--prev" aria-label="Previous slide">&#8592;</button>
@@ -850,6 +859,30 @@ const header = document.querySelector(".site-header");
 toggle.addEventListener("click", () => {
   const open = header.classList.toggle("is-open");
   toggle.setAttribute("aria-expanded", String(open));
+});
+
+/* Theme toggle: dark (default) ↔ light, persisted across visits */
+const themeBtn = document.querySelector(".theme-toggle");
+const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  themeMeta.setAttribute("content", theme === "light" ? "#ece2cf" : "#241d15");
+  themeBtn.setAttribute(
+    "aria-label",
+    theme === "light" ? "Switch to dark theme" : "Switch to light theme"
+  );
+}
+
+applyTheme(localStorage.getItem("aimaura-theme") || "dark");
+
+themeBtn.addEventListener("click", () => {
+  const next =
+    document.documentElement.dataset.theme === "light" ? "dark" : "light";
+  try {
+    localStorage.setItem("aimaura-theme", next);
+  } catch (e) {}
+  applyTheme(next);
 });
 
 /* Services dropdown: click toggles (works for touch), outside click closes */

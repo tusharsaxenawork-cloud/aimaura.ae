@@ -20,6 +20,19 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Light theme — palette taken from the light brand lockup:
+   cream ground, dark-brown ink, terracotta accent */
+:root[data-theme="light"] {
+  --bg: #ece2cf;
+  --bg-2: #e0d4ba;
+  --cream: #32261a;
+  --cream-soft: rgba(50, 38, 26, 0.66);
+  --sand: #ddd0b3;
+  --terra-soft: #a5683a;
+  --line: rgba(50, 38, 26, 0.16);
+  color-scheme: light;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -37,6 +50,7 @@ body {
   font-weight: 300;
   line-height: 1.55;
   letter-spacing: 0.01em;
+  transition: background 0.4s var(--ease), color 0.4s var(--ease);
 }
 
 img {
@@ -80,6 +94,17 @@ a {
   border-bottom: 1px solid var(--line);
 }
 
+/* Light theme: the header floats over dark photography at the top of the
+   page, so it stays cream until it gains a solid background */
+:root[data-theme="light"] .site-header:not(.is-scrolled):not(.is-open) {
+  color: #f6efdf;
+  --line: rgba(246, 239, 223, 0.35);
+}
+
+:root[data-theme="light"] .site-header.is-scrolled {
+  background: rgba(236, 226, 207, 0.86);
+}
+
 .brand {
   display: flex;
   align-items: center;
@@ -115,6 +140,18 @@ a {
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  /* hidden while the header floats transparent at the top; the links fade
+     in once the bar gains a solid background on scroll */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
+}
+
+.site-header.is-scrolled .nav {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
 }
 
 .nav a {
@@ -218,6 +255,56 @@ a {
   display: none;
 }
 
+:root[data-theme="light"] .dropdown {
+  color: var(--cream);
+  background: rgba(240, 232, 214, 0.97);
+  border-color: rgba(50, 38, 26, 0.14);
+}
+
+:root[data-theme="light"] .dropdown a:hover {
+  color: var(--terra);
+  background: rgba(50, 38, 26, 0.05);
+}
+
+/* ---------------- Theme toggle ---------------- */
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin-left: clamp(18px, 2.4vw, 40px);
+  padding: 0;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: inherit;
+  cursor: pointer;
+  transition: color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.theme-toggle:hover {
+  color: var(--terra-soft);
+  border-color: var(--terra-soft);
+}
+
+.theme-toggle svg {
+  width: 17px;
+  height: 17px;
+}
+
+/* Show the theme the button switches TO: sun while dark, moon while light */
+.theme-toggle__moon {
+  display: none;
+}
+
+:root[data-theme="light"] .theme-toggle__sun {
+  display: none;
+}
+
+:root[data-theme="light"] .theme-toggle__moon {
+  display: block;
+}
+
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -232,7 +319,9 @@ a {
 .menu-toggle span {
   height: 1.5px;
   width: 100%;
-  background: var(--cream);
+  /* follows the header's text colour so it stays visible in both themes,
+     over photography and over the open fullscreen menu */
+  background: currentColor;
   transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
 }
 
@@ -1467,6 +1556,14 @@ a {
     transform: translateZ(0);
   }
 
+  /* On mobile the nav is the fullscreen overlay — scrolling must NOT
+     reveal it; only the hamburger (is-open, below) does */
+  .site-header.is-scrolled .nav {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateZ(0);
+  }
+
   .site-header.is-open {
     background: transparent;
     /* backdrop-filter creates a containing block that would trap the
@@ -1483,6 +1580,15 @@ a {
   .menu-toggle {
     display: flex;
     z-index: 60;
+  }
+
+  .theme-toggle {
+    position: relative;
+    z-index: 60;
+    width: 34px;
+    height: 34px;
+    margin-left: 0;
+    margin-right: 18px;
   }
 
   .site-header.is-open .menu-toggle span:first-child {

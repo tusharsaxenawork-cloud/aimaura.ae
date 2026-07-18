@@ -2,13 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
       content="Aimaura is a design and build studio shaping places and the way we live within them."
     />
     <meta name="theme-color" content="#241d15" />
+    <script>
+      /* Set the saved theme before first paint to avoid a flash */
+      try {
+        document.documentElement.dataset.theme =
+          localStorage.getItem("aimaura-theme") || "dark";
+      } catch (e) {}
+    </script>
     <title>Aimaura — Design and Build</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
