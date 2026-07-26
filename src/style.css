@@ -331,6 +331,9 @@ a {
   position: relative;
   height: 100vh;
   min-height: 560px;
+  /* the inactive slides are scaled up (Ken Burns) — clip them or the page
+     gains ~8px of horizontal scroll under the fixed header on phones */
+  overflow: hidden;
 }
 
 .hero__stage {
@@ -1072,31 +1075,6 @@ a {
 .service__desc {
   margin: 0;
   font-size: 0.9rem;
-  color: var(--cream-soft);
-}
-
-.stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: clamp(32px, 6vw, 96px);
-  margin-top: clamp(48px, 8vh, 88px);
-}
-
-.stat__n {
-  display: block;
-  font-family: var(--serif);
-  font-size: clamp(2.6rem, 6vw, 4.4rem);
-  font-weight: 500;
-  line-height: 1;
-  color: var(--terra-soft);
-}
-
-.stat__label {
-  display: block;
-  margin-top: 10px;
-  font-size: 0.76rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
   color: var(--cream-soft);
 }
 

@@ -95,12 +95,6 @@ const mosaic = [
   "https://images.unsplash.com/photo-1600566753151-384129cf4e3e?auto=format&fit=crop&w=1000&q=80",
 ];
 
-const stats = [
-  { n: "15", label: "Years designing & building" },
-  { n: "120+", label: "Projects completed" },
-  { n: "1", label: "Team, from sketch to keys" },
-];
-
 /* Service pages — content inspired by Zen Interiors, styled like Slowness */
 const SERVICES = {
   "interior-design": {
@@ -398,17 +392,6 @@ function homeHTML() {
             <p class="service__desc">${s.tagline}</p>
             <span class="service__go">Explore</span>
           </a>`,
-          )
-          .join("")}
-      </div>
-      <div class="stats">
-        ${stats
-          .map(
-            (s) => `
-          <div class="stat">
-            <span class="stat__n">${s.n}</span>
-            <span class="stat__label">${s.label}</span>
-          </div>`,
           )
           .join("")}
       </div>
