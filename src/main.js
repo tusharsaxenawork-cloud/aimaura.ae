@@ -261,11 +261,11 @@ document.querySelector("#app").innerHTML = `
         <span>Connect</span>
         <a href="#newsletter">Instagram</a>
         <a href="#newsletter">Newsletter</a>
-        <a href="mailto:hello@aimaura.ae">Contact</a>
+        <a href="mailto:aisha@aimaura.ae">Contact</a>
       </div>
       <div>
         <span>Studio</span>
-        <a href="mailto:hello@aimaura.ae">hello@aimaura.ae</a>
+        <a href="mailto:aisha@aimaura.ae">aisha@aimaura.ae</a>
         <a href="mailto:press@aimaura.ae">press@aimaura.ae</a>
         <a href="mailto:careers@aimaura.ae">careers@aimaura.ae</a>
       </div>
@@ -565,7 +565,7 @@ function homeHTML() {
         Tell us about the place you have — or the one you imagine — and we will
         walk you through how we would design and build it.
       </p>
-      <a class="cta__button" href="mailto:hello@aimaura.ae">Book a consultation</a>
+      <a class="cta__button" href="mailto:aisha@aimaura.ae">Book a consultation</a>
     </section>
 
     <!-- Closing image mosaic -->
@@ -608,7 +608,7 @@ function serviceHTML(slug) {
         <p class="pinned__label">In practice</p>
         <h2 class="pinned__title">How we work</h2>
         <p class="pinned__text">${s.body}</p>
-        <a class="pinned__link" href="mailto:hello@aimaura.ae">Start a conversation</a>
+        <a class="pinned__link" href="mailto:aisha@aimaura.ae">Start a conversation</a>
       </div>
       <div class="pinned__scroll">
         <ul class="svc-list">
@@ -625,7 +625,7 @@ function serviceHTML(slug) {
         Tell us about the place you have — or the one you imagine — and we will
         walk you through how we would design and build it.
       </p>
-      <a class="cta__button" href="mailto:hello@aimaura.ae">Book a consultation</a>
+      <a class="cta__button" href="mailto:aisha@aimaura.ae">Book a consultation</a>
     </section>
 
     <section class="feature svc-others">
@@ -725,7 +725,7 @@ function bindPage() {
     });
   });
 
-  /* Newsletter (home only) — relays submissions to hello@aimaura.ae */
+  /* Newsletter (home only) — relays submissions to aisha@aimaura.ae */
   const form = page.querySelector(".newsletter__form");
   if (form) {
     form.addEventListener("submit", async (e) => {
@@ -766,7 +766,7 @@ function bindPage() {
         form.reset();
       } catch {
         note.textContent =
-          "Something went wrong — please email hello@aimaura.ae instead.";
+          "Something went wrong — please email aisha@aimaura.ae instead.";
         note.hidden = false;
       } finally {
         button.disabled = false;
