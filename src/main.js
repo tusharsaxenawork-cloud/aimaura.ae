@@ -1,18 +1,17 @@
 import "./style.css";
 
 /* Newsletter signups are emailed here via formsubmit.co */
-const NEWSLETTER_TO = "aishak1609@gmail.com";
+const NEWSLETTER_TO = "aisha@aimaura.ae";
 
+/* Brand mark: arch with inner line + two offset bars */
 const LOGO = `
-  <svg class="mark" viewBox="0 0 120 120" role="img" aria-hidden="true" focusable="false">
-    <defs>
-      <mask id="aimaura-cut">
-        <rect x="10" y="10" width="100" height="100" rx="4" fill="#fff" />
-        <circle cx="79" cy="41" r="15" fill="#000" />
-        <path d="M36 110 L36 68 A12 12 0 0 1 60 68 L60 110 Z" fill="#000" />
-      </mask>
-    </defs>
-    <rect x="10" y="10" width="100" height="100" rx="4" fill="var(--terra)" mask="url(#aimaura-cut)" />
+  <svg class="mark" viewBox="0 0 320 460" role="img" aria-hidden="true" focusable="false">
+    <g fill="none" stroke="var(--terra)" stroke-width="16">
+      <path d="M22 460 V120 A95 95 0 0 1 212 120 V460" />
+      <path d="M44 460 V120 A73 73 0 0 1 190 120 V460" stroke-width="7" />
+      <path d="M258 150 V460" />
+      <path d="M303 196 V460" stroke-width="14" />
+    </g>
   </svg>`;
 
 /* ------------------------------------------------------------------ */
@@ -69,42 +68,6 @@ const longTalks = [
   },
 ];
 
-const journal = [
-  {
-    src: "https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=1200&q=80",
-    kicker: "The Journal",
-    title: "On light, and building rooms that hold it",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80",
-    kicker: "Field Notes",
-    title: "A conversation on material, patience and place",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?auto=format&fit=crop&w=1200&q=80",
-    kicker: "Process",
-    title: "From first sketch to a threshold you can touch",
-  },
-];
-
-const projects = [
-  {
-    src: "https://images.unsplash.com/photo-1600047509358-9dc75507daeb?auto=format&fit=crop&w=1000&q=80",
-    title: "Atelier House",
-    sub: "A live-work home built around a courtyard of olive trees.",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1600566752734-2a0cd53d1f0e?auto=format&fit=crop&w=1000&q=80",
-    title: "The Long Table",
-    sub: "A farmhouse restoration for gathering, slowly, over long meals.",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1600585153490-76fb20a32601?auto=format&fit=crop&w=1000&q=80",
-    title: "Casa Sofia",
-    sub: "A small retreat of lime plaster, arches and quiet rooms.",
-  },
-];
-
 const places = [
   {
     src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
@@ -140,68 +103,100 @@ const stats = [
 
 /* Service pages — content inspired by Zen Interiors, styled like Slowness */
 const SERVICES = {
-  architecture: {
-    title: "Architecture",
-    tagline: "Buildings drawn out of their site, not dropped onto it.",
-    image:
-      "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=2400&q=80",
-    intro:
-      "Every project begins with the land — its light, its slope, the wind that crosses it. We design homes and small civic buildings that belong to their place, from the first sketch to the final permit set.",
-    body: "Our architectural practice moves slowly on purpose. We spend time on site before we draw. We model in daylight, not render farms. And because our own crews build what we design, every drawing is made by people who know how a wall actually goes up.",
-    points: [
-      "Site studies & concept design",
-      "Full architectural drawings & permits",
-      "Daylight, material & energy studies",
-      "Landscape & courtyard design",
-      "Authority approvals across the UAE",
-    ],
-  },
   "interior-design": {
-    title: "Interior Design",
-    tagline: "Peaceful, minimal rooms that mirror the people who live in them.",
+    title: "Interior Design & Fit-Out",
+    tagline: "Timeless interiors, designed and fitted by one team.",
     image:
       "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2400&q=80",
     intro:
-      "We design interiors that soothe rather than shout — rooms built from lime plaster, oak, linen and stone, arranged around the way you actually live.",
-    body: "From a single room to a whole villa, we begin with how a day moves through the house: where morning light lands, where shoes are dropped, where long dinners happen. The result is bespoke, but never busy — every element chosen to quiet the room, not fill it.",
+      "We design interiors that tell a story of purpose, beauty and craftsmanship — then fit them out ourselves, so the finished room matches the drawing that promised it.",
+    body: "From a single room to a whole villa, we begin with how you actually live: where morning light lands, where long dinners happen, where the day winds down. Concept, materials, joinery and finishes are carried through by one team, with every detail delivered with precision and care.",
     points: [
-      "Bespoke residential interiors",
-      "Villa & apartment renovation design",
+      "Bespoke residential & commercial interiors",
+      "Complete fit-out & finishing",
       "Material, colour & lighting palettes",
       "Custom furniture & joinery design",
       "Art, objects & styling",
     ],
   },
-  "build-fit-out": {
-    title: "Build & Fit-out",
-    tagline: "One hand carries the design through, start to finish.",
+  "turnkey-design-build": {
+    title: "Turnkey Design & Build Solutions",
+    tagline: "One hand carries the project through, start to finish.",
     image:
       "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2400&q=80",
     intro:
-      "The gap between a beautiful drawing and a beautiful room is the build. We close it by building what we design ourselves — our own site teams, our own joiners, one point of responsibility.",
-    body: "Turnkey means you hand us a key at the start and we hand it back at the end. Structure, MEP, finishes, joinery, furniture, the last door handle — sequenced by one team, priced transparently, and finished to the standard the drawings promised.",
+      "The gap between a beautiful drawing and a beautiful space is the build. We close it by building what we design ourselves — one team, one contract, one point of responsibility.",
+    body: "Turnkey means you hand us a key at the start and we hand it back at the end. Design, approvals, structure, MEP, finishes, joinery, furniture, the last door handle — sequenced by one team, priced transparently, and finished to the standard the drawings promised.",
     points: [
-      "Turnkey design & build",
+      "Complete design & build delivery",
       "Villa construction & extension",
-      "Full renovation & fit-out",
-      "Project management & cost control",
+      "Authority approvals across the UAE",
+      "Transparent costing & scheduling",
       "Snagging, handover & aftercare",
     ],
   },
-  "furniture-joinery": {
-    title: "Furniture & Joinery",
-    tagline: "Pieces made for the room they will live in.",
+  "landscape-design": {
+    title: "Landscape Design & Outdoor Living",
+    tagline: "Gardens and terraces made for the way you live outdoors.",
     image:
-      "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=2400&q=80",
+      "https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=2400&q=80",
     intro:
-      "A room settles when its furniture was made for it. Our workshop builds tables, wardrobes, kitchens and doors in oak, ash and stone — measured to the millimetre for the walls they will meet.",
-    body: "We also assemble complete furniture solutions for homes we haven't built: a considered package of made and found pieces, delivered and placed, so a new house feels inhabited on the first evening rather than the hundredth.",
+      "The life of a home doesn't stop at its walls. We design and build landscapes, gardens and outdoor rooms that extend the way you live, work and gather into the open air.",
+    body: "From shaded courtyards to full villa gardens, we plan planting, shade, water and light as one composition — built by our own teams and chosen for the climate, so the garden looks better in its fifth summer than its first.",
     points: [
-      "Custom joinery, kitchens & wardrobes",
-      "Solid-wood furniture, made to order",
-      "Complete furniture packages",
-      "Sourcing of vintage & artisan pieces",
-      "Delivery, placement & styling",
+      "Landscape design & masterplanning",
+      "Outdoor kitchens, pergolas & terraces",
+      "Planting, irrigation & lighting",
+      "Water features & shade structures",
+      "Softscape & hardscape construction",
+    ],
+  },
+  "swimming-pools": {
+    title: "Swimming Pool Design & Construction",
+    tagline: "Luxurious pools, engineered as carefully as they look.",
+    image:
+      "https://images.unsplash.com/photo-1572331165267-854da2b10ccc?auto=format&fit=crop&w=2400&q=80",
+    intro:
+      "A pool is the centrepiece of outdoor living — and the least forgiving thing on a site to build. We design and construct pools where the engineering is as considered as the view across the water.",
+    body: "From infinity edges to compact plunge pools, we handle structure, waterproofing, filtration, heating and finishes as one scope. The result is a pool that is beautiful on day one and effortless to live with for years after.",
+    points: [
+      "Bespoke pool design & engineering",
+      "New construction & pool renovation",
+      "Infinity, lap & plunge pools",
+      "Filtration, heating & automation",
+      "Decking, surrounds & landscaping",
+    ],
+  },
+  "renovation-remodeling": {
+    title: "Renovation & Remodeling",
+    tagline: "Existing spaces, rethought and rebuilt with care.",
+    image:
+      "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=2400&q=80",
+    intro:
+      "Some of the best spaces already exist — they just need to be rethought. We renovate and remodel villas, apartments and workplaces, keeping what deserves to stay and rebuilding what doesn't.",
+    body: "Renovation rewards experience: hidden services, structural surprises, the choreography of living through the works. We survey carefully, plan honestly, and run the site tightly — so the disruption is short and the transformation is lasting.",
+    points: [
+      "Full villa & apartment renovation",
+      "Kitchen & bathroom remodeling",
+      "Structural alterations & extensions",
+      "MEP upgrades & replanning",
+      "Phased works for occupied homes",
+    ],
+  },
+  "project-management": {
+    title: "Project Management & Consultancy",
+    tagline: "Experienced eyes on your project, from concept to completion.",
+    image:
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2400&q=80",
+    intro:
+      "Great projects are managed, not hoped for. We act as your representative — coordinating designers, contractors and authorities so quality, cost and time are protected from concept to completion.",
+    body: "Whether we're delivering the project or overseeing another team's work, the discipline is the same: clear scope, honest budgets, tight programmes and relentless attention to detail. You get one accountable partner and no surprises at handover.",
+    points: [
+      "End-to-end project management",
+      "Design review & value engineering",
+      "Tendering & contractor selection",
+      "Cost, programme & quality control",
+      "Owner representation & consultancy",
     ],
   },
 };
@@ -227,9 +222,7 @@ document.querySelector("#app").innerHTML = `
         </button>
         <div class="dropdown">${serviceLinks}</div>
       </div>
-      <a href="#projects">Projects</a>
       <a href="#places">Places</a>
-      <a href="#journal">Journal</a>
       <a href="#about">About</a>
     </nav>
     <button class="theme-toggle" aria-label="Switch to light theme">
@@ -257,9 +250,7 @@ document.querySelector("#app").innerHTML = `
     <nav class="site-footer__cols" aria-label="Footer">
       <div>
         <span>Discover</span>
-        <a href="#projects">Projects</a>
         <a href="#places">Places</a>
-        <a href="#journal">Journal</a>
         <a href="#about">About</a>
       </div>
       <div>
@@ -306,7 +297,7 @@ function homeHTML() {
               <span class="slide__place">${s.place}</span>
               <span class="slide__country">${s.country}</span>
             </figcaption>
-          </figure>`
+          </figure>`,
           )
           .join("")}
       </div>
@@ -323,38 +314,44 @@ function homeHTML() {
         ${hero
           .map(
             (_, i) =>
-              `<button class="dot ${i === 0 ? "is-active" : ""}" data-index="${i}" role="tab" aria-label="Slide ${i + 1}"></button>`
+              `<button class="dot ${i === 0 ? "is-active" : ""}" data-index="${i}" role="tab" aria-label="Slide ${i + 1}"></button>`,
           )
           .join("")}
       </div>
     </section>
 
     <section class="intention">
-      <p class="intention__label">An intention</p>
       <p class="intention__lead">
-        A wish, a recourse. <em>Aimaura</em> is a design and build studio,
-        shaping places and the way we live within them.
+        Crafting spaces.<br />Creating <em>experiences.</em>
+      </p>
+      <p class="intention__body">
+        Aimaura is a multidisciplinary design and build studio specializing in
+        interiors, landscapes, swimming pools, and turnkey projects. Every
+        project is carefully designed, expertly built, and thoughtfully
+        finished to inspire the way people live, work, and connect.
       </p>
     </section>
 
     <!-- Pinned two-column: left freezes, right scrolls -->
     <section class="pinned" id="prologue">
       <div class="pinned__aside">
-        <p class="pinned__label">The Prologue</p>
-        <h2 class="pinned__title">Where it began</h2>
+        <p class="pinned__label">The Foundation</p>
+        <h2 class="pinned__title">Where Vision Becomes Reality</h2>
         <p class="pinned__text">
-          Aimaura began with a single, stubborn idea: that a building should be
-          made slowly, with the hands and the seasons, and that the rooms we
-          make quietly make us in return. A studio of architects, builders and
-          makers, working close to material and place.
+          Aimaura was built on one simple belief: every space should tell a
+          story of purpose, beauty, and craftsmanship. We create timeless
+          interiors, inspiring landscapes, luxurious swimming pools, and
+          complete turnkey projects, delivering every detail with precision,
+          creativity, and care. From concept to completion, we shape spaces
+          that elevate everyday living and leave a lasting impression.
         </p>
-        <a class="pinned__link" href="#about">View Prologue</a>
+        <a class="pinned__link" href="#about">Our Story</a>
       </div>
       <div class="pinned__scroll">
         ${prologueImages
           .map(
             (src, i) =>
-              `<figure class="pinned__fig"><img src="${src}" alt="Aimaura prologue ${i + 1}" loading="lazy" /></figure>`
+              `<figure class="pinned__fig"><img src="${src}" alt="Aimaura foundation ${i + 1}" loading="lazy" /></figure>`,
           )
           .join("")}
       </div>
@@ -377,7 +374,7 @@ function homeHTML() {
             <p class="talk__desc">${t.desc}</p>
             <a class="talk__link" href="#journal">Read the conversation</a>
           </div>
-        </article>`
+        </article>`,
         )
         .join("")}
     </section>
@@ -400,7 +397,7 @@ function homeHTML() {
             <h3 class="service__title">${s.title}</h3>
             <p class="service__desc">${s.tagline}</p>
             <span class="service__go">Explore</span>
-          </a>`
+          </a>`,
           )
           .join("")}
       </div>
@@ -411,96 +408,79 @@ function homeHTML() {
           <div class="stat">
             <span class="stat__n">${s.n}</span>
             <span class="stat__label">${s.label}</span>
-          </div>`
+          </div>`,
           )
           .join("")}
       </div>
     </section>
 
-    <section class="grid-section" id="journal">
-      <div class="grid-section__head">
-        <h2>The Journal</h2>
-        <a href="#journal" class="more">All entries</a>
-      </div>
-      <div class="cards">
-        ${journal
-          .map(
-            (c) => `
-          <article class="card">
-            <a href="#journal">
-              <div class="card__media"><img src="${c.src}" alt="${c.title}" loading="lazy" /></div>
-              <p class="card__kicker">${c.kicker}</p>
-              <h3 class="card__title">${c.title}</h3>
-            </a>
-          </article>`
-          )
-          .join("")}
-      </div>
-    </section>
-
-    <!-- Pinned two-column: Projects -->
-    <section class="pinned pinned--alt" id="projects">
-      <div class="pinned__aside">
-        <p class="pinned__label">Projects</p>
-        <h2 class="pinned__title">Places we have made</h2>
-        <p class="pinned__text">
-          Each project is rooted in its ground — its light, its stone, the way
-          people already move through it. We design and build the whole, from
-          the first line to the last handle.
-        </p>
-        <a class="pinned__link" href="#places">View Projects</a>
-      </div>
-      <div class="pinned__scroll pinned__scroll--list">
-        ${projects
-          .map(
-            (p) => `
-          <article class="project">
-            <a class="project__media" href="#places"><img src="${p.src}" alt="${p.title}" loading="lazy" /></a>
-            <div class="project__body">
-              <h3 class="project__title">${p.title}</h3>
-              <p class="project__sub">${p.sub}</p>
-            </div>
-          </article>`
-          )
-          .join("")}
-      </div>
-    </section>
-
-    <!-- Before / After comparison -->
+    <!-- Before / After comparisons -->
     <section class="compare" id="transformations">
       <div class="grid-section__head">
         <h2>Before &amp; After</h2>
         <span class="more">Drag to compare</span>
       </div>
-      <div class="compare__frame" style="--pos: 50%">
-        <img
-          class="compare__img compare__img--before"
-          src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=2000&q=80"
-          alt="Before — the space as we found it"
-          draggable="false"
-        />
-        <div class="compare__clip">
+      <div class="compare__row">
+        <div class="compare__frame" style="--pos: 50%">
           <img
-            class="compare__img"
-            src="https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=2000&q=80"
-            alt="After — the finished room"
+            class="compare__img compare__img--after"
+            src="/compare-after.jpeg"
+            alt="After — the finished living room with travertine floor, staircase and chandelier"
             draggable="false"
           />
+          <div class="compare__clip">
+            <img
+              class="compare__img"
+              src="/compare-before.jpeg"
+              alt="Before — the shell of the villa living room, bare drywall and concrete floor"
+              draggable="false"
+            />
+          </div>
+          <div class="compare__handle" aria-hidden="true">
+            <span class="compare__grip"></span>
+          </div>
+          <input
+            class="compare__range"
+            type="range"
+            min="0"
+            max="100"
+            value="50"
+            step="0.1"
+            aria-label="Slide to compare the living room before and after"
+          />
+          <span class="compare__tag compare__tag--before">Before</span>
+          <span class="compare__tag compare__tag--after">After</span>
         </div>
-        <div class="compare__handle" aria-hidden="true">
-          <span class="compare__grip"></span>
+        <div class="compare__frame" style="--pos: 50%">
+          <img
+            class="compare__img compare__img--after"
+            src="/compare-2-after.jpeg"
+            alt="After — the finished bedroom with cove lighting, upholstered bed and rug"
+            draggable="false"
+          />
+          <div class="compare__clip">
+            <img
+              class="compare__img"
+              src="/compare-2-before.jpeg"
+              alt="Before — the bare concrete shell of the bedroom"
+              draggable="false"
+            />
+          </div>
+          <div class="compare__handle" aria-hidden="true">
+            <span class="compare__grip"></span>
+          </div>
+          <input
+            class="compare__range"
+            type="range"
+            min="0"
+            max="100"
+            value="50"
+            step="0.1"
+            aria-label="Slide to compare the bedroom before and after"
+          />
+          <span class="compare__tag compare__tag--before">Before</span>
+          <span class="compare__tag compare__tag--after">After</span>
         </div>
-        <input
-          class="compare__range"
-          type="range"
-          min="0"
-          max="100"
-          value="50"
-          step="0.1"
-          aria-label="Slide to compare before and after"
-        />
-        <span class="compare__tag compare__tag--before">Before</span>
-        <span class="compare__tag compare__tag--after">After</span>
       </div>
     </section>
 
@@ -519,7 +499,7 @@ function homeHTML() {
               <h3 class="card__title">${p.title}</h3>
               <p class="card__sub">${p.sub}</p>
             </a>
-          </article>`
+          </article>`,
           )
           .join("")}
       </div>
@@ -545,37 +525,33 @@ function homeHTML() {
       <div class="philosophy__inner">
         <p class="philosophy__label">Living well</p>
         <p class="philosophy__text">
-          To build with purpose is to make room for attention — for the grain of
-          a plank, the fall of afternoon light, the patience of lime and stone.
-          We design and build homes that ask their inhabitants to slow down, to
-          notice, to belong. This is the work of Aimaura: places with an aura,
-          made to be lived in for a very long time.
+          At Aimaura, we believe exceptional spaces begin with thoughtful
+          design and are brought to life through flawless execution. We
+          specialise in architecture, interior design, landscaping, swimming
+          pools and turnkey project delivery, creating timeless residential
+          and commercial environments that balance beauty, functionality and
+          lasting value.
         </p>
         <div class="philosophy__links">
-          <a href="#projects">Discover Projects</a>
           <a href="#places">Discover Places</a>
-          <a href="#journal">Discover the Journal</a>
         </div>
       </div>
     </section>
 
     <section class="newsletter" id="newsletter">
       <div class="newsletter__inner">
-        <h2>Stay in touch, slowly.</h2>
-        <p>
-          A letter now and then — from the projects, places and process of
-          Aimaura. No noise, no hurry.
-        </p>
+        <h2>Get in touch.</h2>
         <form class="newsletter__form" novalidate>
           <div class="row">
-            <input type="text" name="first" placeholder="First Name" autocomplete="given-name" />
-            <input type="text" name="last" placeholder="Last Name" autocomplete="family-name" />
+            <input type="text" name="name" placeholder="Name" autocomplete="name" required />
+            <input type="email" name="email" placeholder="Email" autocomplete="email" required />
           </div>
           <div class="row">
-            <input type="email" name="email" placeholder="Email" autocomplete="email" required />
             <input type="text" name="location" placeholder="Location" autocomplete="address-level2" />
+            <input type="tel" name="phone" placeholder="Phone number" autocomplete="tel" />
           </div>
-          <button type="submit">Subscribe</button>
+          <textarea name="description" placeholder="Description, if any" rows="4"></textarea>
+          <button type="submit">Send query</button>
           <p class="newsletter__note" hidden>Thank you — we'll be in touch.</p>
         </form>
       </div>
@@ -597,7 +573,7 @@ function homeHTML() {
       ${mosaic
         .map(
           (src, i) =>
-            `<figure class="mosaic__item mosaic__item--${i + 1}"><img src="${src}" alt="Aimaura gallery ${i + 1}" loading="lazy" /></figure>`
+            `<figure class="mosaic__item mosaic__item--${i + 1}"><img src="${src}" alt="Aimaura gallery ${i + 1}" loading="lazy" /></figure>`,
         )
         .join("")}
     </section>
@@ -666,7 +642,7 @@ function serviceHTML(slug) {
               <p class="card__kicker">Services</p>
               <h3 class="card__title">${o.title}</h3>
             </a>
-          </article>`
+          </article>`,
           )
           .join("")}
       </div>
@@ -700,7 +676,7 @@ function bindPage() {
       dot.addEventListener("click", () => {
         go(Number(dot.dataset.index));
         autoplay();
-      })
+      }),
     );
 
     page.querySelector(".hero__arrow--prev").addEventListener("click", () => {
@@ -732,8 +708,8 @@ function bindPage() {
 
     /* Keyboard arrows */
     window.onkeydown = (e) => {
-      if (e.key === "ArrowLeft") go(current - 1), autoplay();
-      if (e.key === "ArrowRight") go(current + 1), autoplay();
+      if (e.key === "ArrowLeft") (go(current - 1), autoplay());
+      if (e.key === "ArrowRight") (go(current + 1), autoplay());
     };
 
     autoplay();
@@ -741,14 +717,13 @@ function bindPage() {
     window.onkeydown = null;
   }
 
-  /* Before / After comparison slider (home only) */
-  const frame = page.querySelector(".compare__frame");
-  if (frame) {
+  /* Before / After comparison sliders (home only) */
+  page.querySelectorAll(".compare__frame").forEach((frame) => {
     const range = frame.querySelector(".compare__range");
     range.addEventListener("input", () => {
       frame.style.setProperty("--pos", `${range.value}%`);
     });
-  }
+  });
 
   /* Newsletter (home only) — relays submissions to hello@aimaura.ae */
   const form = page.querySelector(".newsletter__form");
@@ -770,15 +745,19 @@ function bindPage() {
       try {
         const res = await fetch(`https://formsubmit.co/ajax/${NEWSLETTER_TO}`, {
           method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
           body: JSON.stringify({
             _subject: "Aimaura newsletter signup",
             _template: "table",
             _captcha: "false",
-            "First Name": data.first,
-            "Last Name": data.last,
+            Name: data.name,
             Email: data.email,
             Location: data.location,
+            "Phone number": data.phone,
+            Description: data.description,
           }),
         });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -806,11 +785,11 @@ function bindPage() {
         }
       });
     },
-    { threshold: 0.1 }
+    { threshold: 0.1 },
   );
   page
     .querySelectorAll(
-      ".intention, .pinned, .feature, .services, .compare, .grid-section, .quote, .philosophy, .newsletter, .cta, .mosaic, .svc-hero"
+      ".intention, .pinned, .feature, .services, .compare, .grid-section, .quote, .philosophy, .newsletter, .cta, .mosaic, .svc-hero",
     )
     .forEach((el) => io.observe(el));
 }
@@ -867,10 +846,10 @@ const themeMeta = document.querySelector('meta[name="theme-color"]');
 
 function applyTheme(theme) {
   document.documentElement.dataset.theme = theme;
-  themeMeta.setAttribute("content", theme === "light" ? "#ece2cf" : "#241d15");
+  themeMeta.setAttribute("content", theme === "light" ? "#f3eee6" : "#1c1c1c");
   themeBtn.setAttribute(
     "aria-label",
-    theme === "light" ? "Switch to dark theme" : "Switch to light theme"
+    theme === "light" ? "Switch to dark theme" : "Switch to light theme",
   );
 }
 
