@@ -385,7 +385,7 @@ function homeHTML() {
     <figure class="cta-figure">
       <img
         src="/cta-living-room.jpeg"
-        alt="Aimaura interior — living room with sculptural ceiling lighting"
+        alt="Aimaura living room interior — services: architecture, interior design, landscape & pool design, turnkey projects"
         loading="lazy"
       />
     </figure>

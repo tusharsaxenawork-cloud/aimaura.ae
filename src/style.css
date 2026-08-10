@@ -785,18 +785,8 @@ a {
 .cta-figure img {
   display: block;
   width: 100%;
-  height: clamp(340px, 70vh, 720px);
-  object-fit: cover;
-  /* show the lower part of the room (sofa), crop away the ceiling */
-  object-position: 50% 100%;
-}
-
-/* On phones the container was taller than wide, so the full square image fit
-   and nothing was cropped — a width-based height keeps only the lower slice */
-@media (max-width: 720px) {
-  .cta-figure img {
-    height: 58vw;
-  }
+  /* natural aspect ratio — the whole picture is shown, nothing cropped */
+  height: auto;
 }
 
 @media (max-width: 720px) {
