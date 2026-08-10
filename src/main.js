@@ -366,6 +366,7 @@ function homeHTML() {
           )
           .join("")}
       </div>
+      <button class="hero__scroll" aria-label="Scroll to next section">&#8595;</button>
     </section>
 
     <!-- Consultation CTA -->
@@ -381,7 +382,7 @@ function homeHTML() {
       <a class="cta__button" href="mailto:info@aimaura.ae">Book a consultation &#8594;</a>
     </section>
 
-    <section class="intention">
+    <section class="intention intention--center">
       <p class="intention__lead">
         Crafting spaces.<br />Creating <em>experiences.</em>
       </p>
@@ -722,6 +723,10 @@ function bindPage() {
     page.querySelector(".hero__arrow--next").addEventListener("click", () => {
       go(current + 1);
       autoplay();
+    });
+
+    page.querySelector(".hero__scroll")?.addEventListener("click", () => {
+      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
     });
 
     /* Swipe / drag anywhere on the hero */

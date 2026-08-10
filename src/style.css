@@ -330,6 +330,9 @@ a {
 .hero {
   position: relative;
   height: 100vh;
+  /* on mobile, 100vh extends behind the browser chrome and pushes the
+     bottom controls (scroll cue, dots) out of the visible viewport */
+  height: 100svh;
   min-height: 560px;
   /* the inactive slides are scaled up (Ken Burns) — clip them or the page
      gains ~8px of horizontal scroll under the fixed header on phones */
@@ -517,6 +520,50 @@ a {
   right: clamp(14px, 3vw, 40px);
 }
 
+/* Scroll-down cue */
+.hero__scroll {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: clamp(24px, 5vh, 56px);
+  transform: translateX(-50%);
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  font-size: 1.1rem;
+  color: var(--cream);
+  background: rgba(28, 28, 28, 0.35);
+  border: 1px solid rgba(243, 238, 230, 0.25);
+  border-radius: 999px;
+  cursor: pointer;
+  touch-action: manipulation;
+  animation: hero-scroll-nudge 2.6s var(--ease) infinite;
+  transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.hero__scroll:hover {
+  background: rgba(28, 28, 28, 0.65);
+  border-color: rgba(243, 238, 230, 0.6);
+}
+
+@keyframes hero-scroll-nudge {
+  0%,
+  100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__scroll {
+    animation: none;
+  }
+}
+
 /* ---------------- Before / After compare ---------------- */
 .compare {
   max-width: var(--max);
@@ -681,6 +728,35 @@ a {
   font-size: clamp(1.15rem, 1.8vw, 1.4rem);
   line-height: 1.65;
   color: var(--terra-soft);
+}
+
+.intention--center {
+  text-align: center;
+}
+
+/* Homepage: tighten the gap between the consultation CTA and the intro below it */
+.cta#contact {
+  padding-bottom: clamp(28px, 5vh, 60px);
+}
+
+.cta + .intention {
+  padding-top: clamp(28px, 5vh, 60px);
+}
+
+@media (max-width: 720px) {
+  .intention--center {
+    padding-bottom: 40px;
+  }
+
+  .intention--center + .pinned {
+    padding-top: 40px;
+  }
+}
+
+.intention--center .intention__lead,
+.intention--center .intention__body {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ---------------- Pinned two-column (left freezes, right scrolls) -------- */
