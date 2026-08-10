@@ -1779,6 +1779,13 @@ a {
   flex-direction: column;
   align-items: flex-end;
   gap: 14px;
+  /* the hidden panel keeps its layout box — the container must not eat
+     taps meant for the page underneath (it covers most of a phone screen) */
+  pointer-events: none;
+}
+
+.contact-fab > * {
+  pointer-events: auto;
 }
 
 .contact-fab__toggle {
