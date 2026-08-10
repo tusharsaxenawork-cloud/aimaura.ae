@@ -226,7 +226,6 @@ document.querySelector("#app").innerHTML = `
         </button>
         <div class="dropdown">${serviceLinks}</div>
       </div>
-      <a href="#places">Places</a>
       <a href="#about">About</a>
     </nav>
     <button class="theme-toggle" aria-label="Switch to light theme">
