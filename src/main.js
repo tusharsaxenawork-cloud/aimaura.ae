@@ -78,24 +78,6 @@ const longTalks = [
   },
 ];
 
-const places = [
-  {
-    src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
-    title: "Casa Arco",
-    sub: "Alentejo, Portugal",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=80",
-    title: "Quinta Nova",
-    sub: "Douro Valley, Portugal",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
-    title: "Riverside House",
-    sub: "Lisbon, Portugal",
-  },
-];
-
 const mosaic = [
   "https://images.unsplash.com/photo-1600566752229-250ed79470f8?auto=format&fit=crop&w=1200&q=80",
   "https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?auto=format&fit=crop&w=1000&q=80",
