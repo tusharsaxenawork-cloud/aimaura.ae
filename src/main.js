@@ -3,6 +3,16 @@ import "./style.css";
 /* Newsletter signups are emailed here via formsubmit.co */
 const NEWSLETTER_TO = "aisha@aimaura.ae";
 
+/* Floating contact widget — whatsapp/phone in international format */
+const CONTACT = {
+  whatsapp: "971566908754",
+  phoneDisplay: "+971 56 690 8754",
+  email: "aisha@aimaura.ae",
+};
+const WHATSAPP_URL = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(
+  "Hello Aimaura — I'd like to talk about a project.",
+)}`;
+
 /* Brand mark: arch with inner line + two offset bars */
 const LOGO = `
   <svg class="mark" viewBox="0 0 320 460" role="img" aria-hidden="true" focusable="false">
@@ -99,7 +109,7 @@ const mosaic = [
 const SERVICES = {
   "interior-design": {
     title: "Interior Design & Fit-Out",
-    tagline: "Timeless interiors, designed and fitted by one team.",
+    tagline: "Where thoughtful design meets effortless living.",
     image:
       "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2400&q=80",
     intro:
@@ -115,7 +125,7 @@ const SERVICES = {
   },
   "turnkey-design-build": {
     title: "Turnkey Design & Build Solutions",
-    tagline: "One hand carries the project through, start to finish.",
+    tagline: "From inspired ideas to beautifully built space.",
     image:
       "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2400&q=80",
     intro:
@@ -131,7 +141,7 @@ const SERVICES = {
   },
   "landscape-design": {
     title: "Landscape Design & Outdoor Living",
-    tagline: "Gardens and terraces made for the way you live outdoors.",
+    tagline: "Bringing nature closer to the way you live.",
     image:
       "https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=2400&q=80",
     intro:
@@ -147,7 +157,7 @@ const SERVICES = {
   },
   "swimming-pools": {
     title: "Swimming Pool Design & Construction",
-    tagline: "Luxurious pools, engineered as carefully as they look.",
+    tagline: "A touch of elegance, shaped in water.",
     image:
       "https://images.unsplash.com/photo-1572331165267-854da2b10ccc?auto=format&fit=crop&w=2400&q=80",
     intro:
@@ -163,7 +173,7 @@ const SERVICES = {
   },
   "renovation-remodeling": {
     title: "Renovation & Remodeling",
-    tagline: "Existing spaces, rethought and rebuilt with care.",
+    tagline: "A new aura for the spaces you call home.",
     image:
       "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=2400&q=80",
     intro:
@@ -179,7 +189,7 @@ const SERVICES = {
   },
   "project-management": {
     title: "Project Management & Consultancy",
-    tagline: "Experienced eyes on your project, from concept to completion.",
+    tagline: "Turning complexity into a seamless journey.",
     image:
       "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2400&q=80",
     intro:
@@ -269,6 +279,50 @@ document.querySelector("#app").innerHTML = `
       <p class="site-footer__addr">Design &amp; Build Studio · Dubai, United Arab Emirates</p>
     </div>
   </footer>
+
+  <div class="contact-fab">
+    <div class="contact-fab__panel" id="contact-panel" role="dialog" aria-label="Contact Aimaura">
+      <div class="contact-fab__head">
+        ${LOGO}
+        <p class="contact-fab__title">Aimaura</p>
+        <p class="contact-fab__sub">Design and Build — we're here to help.</p>
+      </div>
+      <nav class="contact-fab__actions" aria-label="Contact options">
+        <a href="${WHATSAPP_URL}" target="_blank" rel="noopener">
+          <span class="contact-fab__icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          </span>
+          <span class="contact-fab__label">Chat on WhatsApp</span>
+          <span class="contact-fab__chevron" aria-hidden="true">›</span>
+        </a>
+        <a href="tel:+${CONTACT.whatsapp}">
+          <span class="contact-fab__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span class="contact-fab__label">Call us now<small>${CONTACT.phoneDisplay}</small></span>
+          <span class="contact-fab__chevron" aria-hidden="true">›</span>
+        </a>
+        <a href="mailto:${CONTACT.email}">
+          <span class="contact-fab__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </span>
+          <span class="contact-fab__label">Email the studio<small>${CONTACT.email}</small></span>
+          <span class="contact-fab__chevron" aria-hidden="true">›</span>
+        </a>
+        <a class="contact-fab__book" href="#newsletter">
+          <span class="contact-fab__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          </span>
+          <span class="contact-fab__label">Book a consultation</span>
+          <span class="contact-fab__chevron" aria-hidden="true">›</span>
+        </a>
+      </nav>
+    </div>
+    <button class="contact-fab__toggle" aria-expanded="false" aria-controls="contact-panel" aria-label="Contact us">
+      <svg class="contact-fab__icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      <svg class="contact-fab__icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
 `;
 
 const page = document.querySelector("#page");
@@ -378,8 +432,8 @@ function homeHTML() {
       <div class="services__head">
         <h2>What we do</h2>
         <p>
-          A single studio for the whole arc of a home — designed, built and
-          furnished by one team.
+          A complete design and build approach for spaces made to be lived
+          in.
         </p>
       </div>
       <div class="services__grid">
@@ -488,20 +542,17 @@ function homeHTML() {
       </div>
     </section>
 
-    <section class="quote" aria-label="On slowness">
+    <section class="quote" aria-label="Our belief">
       <blockquote>
-        Consider this utterly commonplace situation: a man is walking down the
-        street. At a certain moment, he tries to recall something, but the
-        recollection escapes him. Automatically, he slows down. Meanwhile, a
-        person who wants to forget a disagreeable incident he has just lived
-        through starts unconsciously to speed up his pace, as if he were trying
-        to distance himself from a thing still too close to him in time. In
-        existential mathematics, that experience takes the form of two basic
-        equations: the degree of slowness is directly proportional to the
-        intensity of memory; the degree of speed is directly proportional to
-        the intensity of forgetting.
+        We believe that every space carries an aura of its own. Our work is to
+        discover it, shape it and bring it to life. From interiors and
+        landscapes to swimming pools, renovations and complete design &amp;
+        build projects, AIMAURA brings creativity and construction together
+        with a clear sense of purpose. We listen before we design, plan before
+        we build and remain committed to the details that turn a space into
+        something truly personal.
       </blockquote>
-      <cite>— Milan Kundera, <span>Slowness</span></cite>
+      <cite>— AIMAURA, <span>Design &amp; Build</span></cite>
     </section>
 
     <section class="philosophy" id="about">
@@ -856,6 +907,33 @@ dropBtn.addEventListener("click", (e) => {
   dropBtn.setAttribute("aria-expanded", String(open));
 });
 document.addEventListener("click", () => drop.classList.remove("is-open"));
+
+/* Floating contact widget: toggle opens the panel, any action link,
+   outside click or Escape closes it */
+const fab = document.querySelector(".contact-fab");
+const fabToggle = fab.querySelector(".contact-fab__toggle");
+
+function setFab(open) {
+  fab.classList.toggle("is-open", open);
+  fabToggle.setAttribute("aria-expanded", String(open));
+  fabToggle.setAttribute(
+    "aria-label",
+    open ? "Close contact options" : "Contact us",
+  );
+}
+
+fabToggle.addEventListener("click", (e) => {
+  e.stopPropagation();
+  setFab(!fab.classList.contains("is-open"));
+});
+fab.addEventListener("click", (e) => {
+  e.stopPropagation();
+  if (e.target.closest(".contact-fab__actions a")) setFab(false);
+});
+document.addEventListener("click", () => setFab(false));
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") setFab(false);
+});
 
 /* Header shrink + logo slide on scroll */
 const onScroll = () =>

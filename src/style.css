@@ -1693,6 +1693,187 @@ a {
   }
 }
 
+/* ---------------- Floating contact widget ---------------- */
+.contact-fab {
+  position: fixed;
+  right: clamp(16px, 3vw, 34px);
+  bottom: calc(clamp(16px, 3vw, 34px) + env(safe-area-inset-bottom, 0px));
+  z-index: 70;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+}
+
+.contact-fab__toggle {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--terra);
+  color: #f3eee6;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+
+.contact-fab__toggle:hover {
+  transform: scale(1.07);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.42);
+}
+
+.contact-fab__toggle svg {
+  grid-area: 1 / 1;
+  width: 26px;
+  height: 26px;
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+.contact-fab__icon-close {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.6);
+}
+
+.contact-fab.is-open .contact-fab__icon-chat {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.6);
+}
+
+.contact-fab.is-open .contact-fab__icon-close {
+  opacity: 1;
+  transform: none;
+}
+
+.contact-fab__panel {
+  width: min(330px, calc(100vw - 32px));
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(14px) scale(0.96);
+  transform-origin: bottom right;
+  transition: opacity 0.35s var(--ease), transform 0.35s var(--ease),
+    visibility 0s linear 0.35s;
+}
+
+.contact-fab.is-open .contact-fab__panel {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+
+.contact-fab__head {
+  padding: 24px 24px 20px;
+  background: var(--terra);
+  color: #f3eee6;
+}
+
+/* The brand mark strokes with var(--terra) — recolour it on the terra head */
+.contact-fab__head .mark {
+  --terra: #f3eee6;
+  width: 2.2em;
+  height: 2.2em;
+  margin-bottom: 10px;
+}
+
+.contact-fab__title {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+.contact-fab__sub {
+  margin: 4px 0 0;
+  font-size: 0.82rem;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  color: rgba(243, 238, 230, 0.8);
+}
+
+.contact-fab__actions {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-fab__actions a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border-top: 1px solid var(--line);
+  transition: background 0.25s var(--ease);
+}
+
+.contact-fab__actions a:first-child {
+  border-top: 0;
+}
+
+.contact-fab__actions a:hover {
+  background: rgba(154, 106, 58, 0.12);
+}
+
+.contact-fab__icon {
+  flex: none;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  color: var(--terra-soft);
+}
+
+.contact-fab__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.contact-fab__label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.92rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.contact-fab__label small {
+  font-size: 0.76rem;
+  font-weight: 300;
+  color: var(--cream-soft);
+  letter-spacing: 0.03em;
+}
+
+.contact-fab__chevron {
+  margin-left: auto;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--cream-soft);
+  transition: transform 0.25s var(--ease);
+}
+
+.contact-fab__actions a:hover .contact-fab__chevron {
+  transform: translateX(3px);
+}
+
+.contact-fab__book {
+  background: rgba(154, 106, 58, 0.16);
+}
+
+.contact-fab__book .contact-fab__icon {
+  background: var(--terra);
+  border-color: var(--terra);
+  color: #f3eee6;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     transition-duration: 0.001s !important;
