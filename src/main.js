@@ -548,27 +548,6 @@ function homeHTML() {
       </div>
     </section>
 
-    <section class="grid-section" id="places">
-      <div class="grid-section__head">
-        <h2>Places</h2>
-        <a href="#places" class="more">All places</a>
-      </div>
-      <div class="cards cards--places">
-        ${places
-          .map(
-            (p) => `
-          <article class="card card--place">
-            <a href="#places">
-              <div class="card__media"><img src="${p.src}" alt="${p.title}" loading="lazy" /></div>
-              <h3 class="card__title">${p.title}</h3>
-              <p class="card__sub">${p.sub}</p>
-            </a>
-          </article>`,
-          )
-          .join("")}
-      </div>
-    </section>
-
     <section class="quote" aria-label="Our belief">
       <blockquote>
         We believe that every space carries an aura of its own. Our work is to
