@@ -60,19 +60,19 @@ const prologueImages = [
 const longTalks = [
   {
     src: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=80",
-    kicker: "The Long Talk",
+    kicker: "Conversation",
     title: "Dialogues in presence — designing for stillness",
     desc: "A conversation on how a building can slow a body down, and why the threshold matters more than the façade.",
   },
   {
     src: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1400&q=80",
-    kicker: "The Long Talk",
+    kicker: "Conversation",
     title: "On concrete, light and restraint",
     desc: "With a master of the raw and the elemental, on letting material speak and leaving what is unnecessary unbuilt.",
   },
   {
     src: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1400&q=80",
-    kicker: "The Long Talk",
+    kicker: "Conversation",
     title: "Building a modern retreat, one season at a time",
     desc: "How a house grows with the land it sits on, and the patience required to build something that lasts.",
   },
@@ -382,6 +382,14 @@ function homeHTML() {
       <a class="cta__button" href="mailto:info@aimaura.ae">Book a consultation &#8594;</a>
     </section>
 
+    <figure class="cta-figure">
+      <img
+        src="/cta-living-room.jpeg"
+        alt="Aimaura interior — living room with sculptural ceiling lighting"
+        loading="lazy"
+      />
+    </figure>
+
     <section class="intention intention--center">
       <p class="intention__lead">
         Crafting spaces.<br />Creating <em>experiences.</em>
@@ -422,9 +430,14 @@ function homeHTML() {
     <!-- The Long Talk -->
     <section class="feature" id="long-talk">
       <div class="feature__head">
-        <h2>The Long Talk</h2>
+        <h2>Conversations That Shape Spaces</h2>
         <a href="#journal" class="more">All conversations</a>
       </div>
+      <p class="feature__intro">
+        Real stories. Honest conversations. Thoughtful design. Explore how we
+        collaborate with our clients to create spaces that are intentional,
+        timeless, and uniquely theirs.
+      </p>
       ${longTalks
         .map(
           (t) => `
@@ -434,7 +447,7 @@ function homeHTML() {
             <p class="talk__kicker">${t.kicker}</p>
             <h3 class="talk__title">${t.title}</h3>
             <p class="talk__desc">${t.desc}</p>
-            <a class="talk__link" href="#journal">Read the conversation</a>
+            <a class="talk__link" href="#journal"><span class="talk__link-text">Read the conversation</span><span class="talk__link-arrow" aria-hidden="true">&rarr;</span></a>
           </div>
         </article>`,
         )
@@ -761,8 +774,13 @@ function bindPage() {
   /* Before / After comparison sliders (home only) */
   page.querySelectorAll(".compare__frame").forEach((frame) => {
     const range = frame.querySelector(".compare__range");
+    let raf = null; /* touch fires input faster than 60Hz — write once per frame */
     range.addEventListener("input", () => {
-      frame.style.setProperty("--pos", `${range.value}%`);
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = null;
+        frame.style.setProperty("--pos", `${range.value}%`);
+      });
     });
   });
 

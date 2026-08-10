@@ -602,29 +602,47 @@ a {
   -webkit-user-select: none;
 }
 
-/* the AFTER layer sits on top, revealed left-of-handle via clip-path */
+/* the AFTER layer sits on top, revealed left-of-handle.
+   Reveal = container shifted left + image counter-shifted right: both are
+   pure transforms, so mobile GPUs composite the drag without repainting
+   the photo (clip-path/left repaint every frame and jank on phones). */
 .compare__clip {
   position: absolute;
   inset: 0;
-  clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+  overflow: hidden;
+  transform: translateX(calc(var(--pos) - 100%));
+  will-change: transform;
+}
+
+.compare__clip .compare__img {
+  transform: translateX(calc(100% - var(--pos)));
+  will-change: transform;
 }
 
 .compare__handle {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: var(--pos);
-  width: 2px;
-  margin-left: -1px;
-  background: var(--cream);
+  inset: 0;
+  transform: translateX(calc(var(--pos) - 100%));
+  will-change: transform;
   pointer-events: none;
   z-index: 2;
+}
+
+/* the divider line lives on the handle layer's right edge */
+.compare__handle::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -1px;
+  width: 2px;
+  background: var(--cream);
 }
 
 .compare__grip {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 100%;
   transform: translate(-50%, -50%);
   width: 46px;
   height: 46px;
@@ -734,13 +752,40 @@ a {
   text-align: center;
 }
 
-/* Homepage: tighten the gap between the consultation CTA and the intro below it */
+/* Homepage: the CTA button half-overlaps the picture below it, like the
+   mockup — the figure is pulled up behind the button */
 .cta#contact {
-  padding-bottom: clamp(28px, 5vh, 60px);
+  position: relative;
+  z-index: 1;
+  padding-bottom: 0;
 }
 
-.cta + .intention {
+.cta + .intention,
+.cta-figure + .intention {
   padding-top: clamp(28px, 5vh, 60px);
+}
+
+/* Full-bleed image under the homepage CTA */
+.cta-figure {
+  /* pulled up so the CTA button half-overlaps the picture, like the mockup */
+  margin: -28px 0 0;
+}
+
+.cta-figure img {
+  display: block;
+  width: 100%;
+  height: clamp(340px, 70vh, 720px);
+  object-fit: cover;
+  /* show the lower part of the room (sofa), crop away the ceiling */
+  object-position: 50% 100%;
+}
+
+/* On phones the container was taller than wide, so the full square image fit
+   and nothing was cropped — a width-based height keeps only the lower slice */
+@media (max-width: 720px) {
+  .cta-figure img {
+    height: 58vw;
+  }
 }
 
 @media (max-width: 720px) {
@@ -810,8 +855,20 @@ a {
   padding-bottom: 4px;
 }
 
+.talk__link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 12px;
+  padding-bottom: 0;
+}
+
+.talk__link-text {
+  position: relative;
+  padding-bottom: 4px;
+}
+
 .pinned__link::after,
-.talk__link::after {
+.talk__link-text::after {
   content: "";
   position: absolute;
   left: 0;
@@ -823,8 +880,16 @@ a {
 }
 
 .pinned__link:hover::after,
-.talk__link:hover::after {
+.talk__link:hover .talk__link-text::after {
   opacity: 0.4;
+}
+
+.talk__link-arrow {
+  transition: transform 0.4s var(--ease);
+}
+
+.talk__link:hover .talk__link-arrow {
+  transform: translateX(4px);
 }
 
 .pinned__scroll {
@@ -901,9 +966,8 @@ a {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  margin-bottom: clamp(30px, 5vw, 56px);
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--line);
+  gap: 24px;
+  margin-bottom: 18px;
 }
 
 .feature__head h2 {
@@ -913,19 +977,24 @@ a {
   font-weight: 500;
 }
 
+.feature__intro {
+  margin: 0 0 clamp(36px, 5vw, 64px);
+  max-width: 52ch;
+  color: var(--cream-soft);
+}
+
 .talk {
   display: grid;
-  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-  gap: clamp(24px, 4vw, 72px);
-  align-items: center;
-  padding: clamp(32px, 5vh, 64px) 0;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: stretch;
+  background: var(--bg-2);
 }
 
 .talk + .talk {
-  border-top: 1px solid var(--line);
+  margin-top: clamp(28px, 4vw, 56px);
 }
 
-.talk:nth-child(odd) .talk__media {
+.talk:nth-of-type(even) .talk__media {
   order: 2;
 }
 
@@ -937,13 +1006,22 @@ a {
 
 .talk__media img {
   width: 100%;
-  aspect-ratio: 16 / 10;
+  height: 100%;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   transition: transform 1.2s var(--ease);
 }
 
 .talk__media:hover img {
   transform: scale(1.04);
+}
+
+.talk__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: clamp(28px, 4vw, 64px);
 }
 
 .talk__kicker {
@@ -1608,7 +1686,7 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .talk:nth-child(odd) .talk__media {
+  .talk:nth-of-type(even) .talk__media {
     order: 0;
   }
 
