@@ -571,7 +571,7 @@ function homeHTML() {
           lasting value.
         </p>
         <div class="philosophy__links">
-          <a href="#places">Discover Places</a>
+          <a href="#newsletter">Start a project</a>
         </div>
       </div>
     </section>
