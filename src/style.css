@@ -769,6 +769,17 @@ a {
 .cta-figure {
   /* pulled up so the CTA button half-overlaps the picture, like the mockup */
   margin: -28px 0 0;
+  position: relative;
+}
+
+/* Soft fade into the page background along the image's top edge */
+.cta-figure::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: clamp(90px, 22vh, 200px);
+  background: linear-gradient(to bottom, var(--bg), transparent);
+  pointer-events: none;
 }
 
 .cta-figure img {

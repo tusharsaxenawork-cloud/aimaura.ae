@@ -373,7 +373,7 @@ function homeHTML() {
     <section class="cta" id="contact">
       <p class="cta__label">Design. Build. Deliver.</p>
       <h2 class="cta__title">
-        We design spaces that inspire <em>and build experiences that last.</em>
+        We design spaces that inspire<br /><em>and build experiences that last.</em>
       </h2>
       <p class="cta__text">
         From concept to completion, we create timeless interiors and exteriors
