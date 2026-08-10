@@ -1,13 +1,13 @@
 import "./style.css";
 
 /* Newsletter signups are emailed here via formsubmit.co */
-const NEWSLETTER_TO = "aisha@aimaura.ae";
+const NEWSLETTER_TO = "info@aimaura.ae";
 
 /* Floating contact widget — whatsapp/phone in international format */
 const CONTACT = {
   whatsapp: "971566908754",
   phoneDisplay: "+971 56 690 8754",
-  email: "aisha@aimaura.ae",
+  email: "info@aimaura.ae",
 };
 const WHATSAPP_URL = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(
   "Hello Aimaura — I'd like to talk about a project.",
@@ -265,11 +265,11 @@ document.querySelector("#app").innerHTML = `
         <span>Connect</span>
         <a href="#newsletter">Instagram</a>
         <a href="#newsletter">Newsletter</a>
-        <a href="mailto:aisha@aimaura.ae">Contact</a>
+        <a href="mailto:info@aimaura.ae">Contact</a>
       </div>
       <div>
         <span>Studio</span>
-        <a href="mailto:aisha@aimaura.ae">aisha@aimaura.ae</a>
+        <a href="mailto:info@aimaura.ae">info@aimaura.ae</a>
         <a href="mailto:press@aimaura.ae">press@aimaura.ae</a>
         <a href="mailto:careers@aimaura.ae">careers@aimaura.ae</a>
       </div>
@@ -366,6 +366,19 @@ function homeHTML() {
           )
           .join("")}
       </div>
+    </section>
+
+    <!-- Consultation CTA -->
+    <section class="cta" id="contact">
+      <p class="cta__label">Design. Build. Deliver.</p>
+      <h2 class="cta__title">
+        We design spaces that inspire <em>and build experiences that last.</em>
+      </h2>
+      <p class="cta__text">
+        From concept to completion, we create timeless interiors and exteriors
+        with precision, passion and purpose.
+      </p>
+      <a class="cta__button" href="mailto:info@aimaura.ae">Book a consultation &#8594;</a>
     </section>
 
     <section class="intention">
@@ -591,17 +604,6 @@ function homeHTML() {
       </div>
     </section>
 
-    <!-- Consultation CTA -->
-    <section class="cta" id="contact">
-      <p class="cta__label">Begin</p>
-      <h2 class="cta__title">Elevate your space, <em>slowly</em>.</h2>
-      <p class="cta__text">
-        Tell us about the place you have — or the one you imagine — and we will
-        walk you through how we would design and build it.
-      </p>
-      <a class="cta__button" href="mailto:aisha@aimaura.ae">Book a consultation</a>
-    </section>
-
     <!-- Closing image mosaic -->
     <section class="mosaic" aria-label="Gallery">
       ${mosaic
@@ -642,7 +644,7 @@ function serviceHTML(slug) {
         <p class="pinned__label">In practice</p>
         <h2 class="pinned__title">How we work</h2>
         <p class="pinned__text">${s.body}</p>
-        <a class="pinned__link" href="mailto:aisha@aimaura.ae">Start a conversation</a>
+        <a class="pinned__link" href="mailto:info@aimaura.ae">Start a conversation</a>
       </div>
       <div class="pinned__scroll">
         <ul class="svc-list">
@@ -659,7 +661,7 @@ function serviceHTML(slug) {
         Tell us about the place you have — or the one you imagine — and we will
         walk you through how we would design and build it.
       </p>
-      <a class="cta__button" href="mailto:aisha@aimaura.ae">Book a consultation</a>
+      <a class="cta__button" href="mailto:info@aimaura.ae">Book a consultation</a>
     </section>
 
     <section class="feature svc-others">
@@ -759,7 +761,7 @@ function bindPage() {
     });
   });
 
-  /* Newsletter (home only) — relays submissions to aisha@aimaura.ae */
+  /* Newsletter (home only) — relays submissions to info@aimaura.ae */
   const form = page.querySelector(".newsletter__form");
   if (form) {
     form.addEventListener("submit", async (e) => {
@@ -800,7 +802,7 @@ function bindPage() {
         form.reset();
       } catch {
         note.textContent =
-          "Something went wrong — please email aisha@aimaura.ae instead.";
+          "Something went wrong — please email info@aimaura.ae instead.";
         note.hidden = false;
       } finally {
         button.disabled = false;
