@@ -253,7 +253,6 @@ document.querySelector("#app").innerHTML = `
     <nav class="site-footer__cols" aria-label="Footer">
       <div>
         <span>Discover</span>
-        <a href="#places">Places</a>
         <a href="#about">About</a>
       </div>
       <div>
