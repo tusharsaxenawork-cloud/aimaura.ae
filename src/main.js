@@ -209,6 +209,7 @@ document.querySelector("#app").innerHTML = `
         <div class="dropdown">${serviceLinks}</div>
       </div>
       <a href="#about">About</a>
+      <button class="nav__contact" type="button">Contact us</button>
     </nav>
     <button class="theme-toggle" aria-label="Switch to light theme">
       <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false">
@@ -243,15 +244,12 @@ document.querySelector("#app").innerHTML = `
       </div>
       <div>
         <span>Connect</span>
-        <a href="#newsletter">Instagram</a>
-        <a href="#newsletter">Newsletter</a>
-        <a href="mailto:info@aimaura.ae">Contact</a>
+        <a href="https://www.instagram.com/aimauradesignbuild" target="_blank" rel="noopener">Instagram</a>
+        <button class="footer-contact" type="button">Contact</button>
       </div>
       <div>
         <span>Studio</span>
         <a href="mailto:info@aimaura.ae">info@aimaura.ae</a>
-        <a href="mailto:press@aimaura.ae">press@aimaura.ae</a>
-        <a href="mailto:careers@aimaura.ae">careers@aimaura.ae</a>
       </div>
     </nav>
     <div class="site-footer__base">
@@ -910,6 +908,17 @@ fabToggle.addEventListener("click", (e) => {
   e.stopPropagation();
   setFab(!fab.classList.contains("is-open"));
 });
+
+/* "Contact us" in the nav and "Contact" in the footer open the contact
+   bubble (and close the fullscreen menu on mobile so it isn't hidden) */
+document.querySelectorAll(".nav__contact, .footer-contact").forEach((btn) =>
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    header.classList.remove("is-open");
+    toggle.setAttribute("aria-expanded", "false");
+    setFab(true);
+  }),
+);
 fab.addEventListener("click", (e) => {
   e.stopPropagation();
   if (e.target.closest(".contact-fab__actions a")) setFab(false);

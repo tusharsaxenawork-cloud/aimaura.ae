@@ -175,6 +175,22 @@ a {
   width: 100%;
 }
 
+/* "Contact us" bubble trigger in the nav */
+.nav__contact {
+  padding: 0 0 2px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  text-transform: uppercase;
+  transition: color 0.25s var(--ease);
+}
+
+.nav__contact:hover {
+  color: var(--terra-soft);
+}
+
 /* Services dropdown */
 .nav__drop {
   position: relative;
@@ -1530,6 +1546,22 @@ a {
 }
 
 .site-footer__cols a:hover {
+  color: var(--terra-soft);
+}
+
+/* "Contact" opens the bubble — a button styled to match the footer links */
+.footer-contact {
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  color: var(--cream);
+  transition: color 0.3s var(--ease);
+}
+
+.footer-contact:hover {
   color: var(--terra-soft);
 }
 
