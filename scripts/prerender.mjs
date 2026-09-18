@@ -13,7 +13,7 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { ROUTES, SITE } from "../src/seo.js";
+import { ROUTES, SITE, DEFAULT_OG_IMAGE } from "../src/seo.js";
 
 const dist = join(dirname(fileURLToPath(import.meta.url)), "..", "dist");
 const START = "<!-- seo:start -->";
@@ -37,6 +37,7 @@ const canonicalFor = (path) => `${SITE.origin}${path === "/" ? "/" : path}`;
 function seoBlock(route) {
   const canonical = canonicalFor(route.path);
   const ogType = route.path === "/" ? "website" : "article";
+  const image = route.image || DEFAULT_OG_IMAGE;
   return [
     START,
     `<title>${attr(route.title)}</title>`,
@@ -44,13 +45,19 @@ function seoBlock(route) {
     `<link rel="canonical" href="${canonical}" />`,
     `<meta property="og:type" content="${ogType}" />`,
     `<meta property="og:site_name" content="Aimaura" />`,
+    `<meta property="og:locale" content="${SITE.locale}" />`,
     `<meta property="og:title" content="${attr(route.title)}" />`,
     `<meta property="og:description" content="${attr(route.description)}" />`,
     `<meta property="og:url" content="${canonical}" />`,
-    `<meta property="og:image" content="${SITE.ogImage}" />`,
+    `<meta property="og:image" content="${attr(image.url)}" />`,
+    `<meta property="og:image:width" content="${image.width}" />`,
+    `<meta property="og:image:height" content="${image.height}" />`,
+    `<meta property="og:image:alt" content="${attr(image.alt)}" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:title" content="${attr(route.title)}" />`,
     `<meta name="twitter:description" content="${attr(route.description)}" />`,
+    `<meta name="twitter:image" content="${attr(image.url)}" />`,
+    `<meta name="twitter:image:alt" content="${attr(image.alt)}" />`,
     `<script type="application/ld+json">\n${jsonLd(route.jsonld)}\n</script>`,
     END,
   ].join("\n    ");

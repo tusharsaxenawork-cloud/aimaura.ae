@@ -1,5 +1,5 @@
 import "./style.css";
-import { ROUTE_BY_PATH, SITE } from "./seo.js";
+import { ROUTE_BY_PATH, SITE, DEFAULT_OG_IMAGE } from "./seo.js";
 
 /* Newsletter signups are emailed here via formsubmit.co */
 const NEWSLETTER_TO = "info@aimaura.ae";
@@ -848,10 +848,17 @@ function applyMeta(pathname) {
   const canonical = `${SITE.origin}${pathname === "/" ? "/" : pathname}`;
   const set = (sel, attr, val) =>
     document.head.querySelector(sel)?.setAttribute(attr, val);
+  const image = meta.image || DEFAULT_OG_IMAGE;
   set('meta[name="description"]', "content", meta.description);
   set('meta[property="og:title"]', "content", meta.title);
   set('meta[property="og:description"]', "content", meta.description);
   set('meta[property="og:url"]', "content", canonical);
+  set('meta[property="og:image"]', "content", image.url);
+  set('meta[property="og:image:width"]', "content", String(image.width));
+  set('meta[property="og:image:height"]', "content", String(image.height));
+  set('meta[property="og:image:alt"]', "content", image.alt);
+  set('meta[name="twitter:image"]', "content", image.url);
+  set('meta[name="twitter:image:alt"]', "content", image.alt);
   set('link[rel="canonical"]', "href", canonical);
 }
 

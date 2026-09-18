@@ -13,7 +13,30 @@ export const SITE = {
   name: "Aimaura",
   logo: "https://aimaura.ae/aimaura-primary.png",
   ogImage: "https://aimaura.ae/aimaura-brand.jpeg",
+  ogImageAlt: "Aimaura — design-and-build studio in Dubai",
+  ogImageWidth: 983,
+  ogImageHeight: 556,
+  locale: "en_US",
 };
+
+/* Default social-share image (homepage + any route without its own).
+   Every route carries a full `image` object so prerender.mjs can emit the
+   og:image:width/height that let platforms render the large card on first
+   scrape. Service pages use a distinct Unsplash photo (different from the
+   page's on-site hero) cropped to the 1200x630 social ratio. */
+export const DEFAULT_OG_IMAGE = {
+  url: SITE.ogImage,
+  alt: SITE.ogImageAlt,
+  width: SITE.ogImageWidth,
+  height: SITE.ogImageHeight,
+};
+
+const ogImage = (id, alt) => ({
+  url: `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1200&h=630&q=80`,
+  alt,
+  width: 1200,
+  height: 630,
+});
 
 /* Organization schema — referenced by every Service via @id so the graph
    ties back to one business entity. */
@@ -62,6 +85,7 @@ export const ROUTES = [
     title: "AIMAURA | Best Interior Design Company in Dubai",
     description:
       "Top-rated interior companies in Dubai offering interior design, architecture consultant & landscape architecture design services for stunning, modern spaces",
+    image: DEFAULT_OG_IMAGE,
     jsonld: ORG_JSONLD,
   },
   {
@@ -69,6 +93,10 @@ export const ROUTES = [
     title: "Interior Design & Fit Out Companies in Dubai | Villa, Office",
     description:
       "Leading interior design company in Dubai offering luxury villa, apartment, commercial & office interior design, plus trusted interior fit out companies citywide",
+    image: ogImage(
+      "1616486338812-3dadae4b4ace",
+      "A softly lit, styled living room interior by Aimaura",
+    ),
     jsonld: service(
       "interior-design",
       "Interior Design",
@@ -81,6 +109,10 @@ export const ROUTES = [
     title: "Turnkey Interior Design | Interior Fit Out Solutions Dubai",
     description:
       "AIMAURA delivers turnkey interior design services, turnkey interior fit out and complete turnkey solutions in Dubai, from concept to handover for your space",
+    image: ogImage(
+      "1600566753190-17f0baa2a6c3",
+      "A modern timber-clad home built by Aimaura in Dubai",
+    ),
     jsonld: service(
       "turnkey-design-build",
       "Turnkey Design & Build",
@@ -93,6 +125,10 @@ export const ROUTES = [
     title: "Landscaping Companies | Landscape & Garden Design in Dubai",
     description:
       "AIMAURA is a top landscape design and garden design company offering villa landscaping, landscaping services and garden landscaping solutions across Dubai",
+    image: ogImage(
+      "1585320806297-9794b3e4eeae",
+      "A landscaped garden path with flowering borders by Aimaura",
+    ),
     jsonld: service(
       "landscape-design",
       "Landscape Design",
@@ -105,6 +141,10 @@ export const ROUTES = [
     title: "Swimming Pool Construction Company | Pool Builders Dubai",
     description:
       "AIMAURA is a trusted swimming pool construction company offering pool design and construction, pool renovation and swimming pool contractor services in Dubai",
+    image: ogImage(
+      "1576013551627-0cc20b96c2a7",
+      "A villa swimming pool with stone surround by Aimaura",
+    ),
     jsonld: service(
       "swimming-pools",
       "Swimming Pool Construction",
@@ -117,6 +157,10 @@ export const ROUTES = [
     title: "Villa & Apartment Renovation Company | Remodeling Dubai",
     description:
       "AIMAURA is a trusted renovation company in Dubai offering villa renovation, apartment renovation, interior renovation and home remodeling contractor services",
+    image: ogImage(
+      "1581858726788-75bc0f6a952d",
+      "A minimalist renovated interior with a walnut sideboard by Aimaura",
+    ),
     jsonld: service(
       "renovation-remodeling",
       "Renovation & Remodeling",
@@ -129,6 +173,10 @@ export const ROUTES = [
     title: "Interior Design Consultation | Project Management Dubai",
     description:
       "AIMAURA offers interior design consultation services, construction project management and architectural consultancy for interior design consultants in Dubai",
+    image: ogImage(
+      "1503387837-b154d5074bd2",
+      "Architectural plans being drawn during a project consultancy",
+    ),
     jsonld: service(
       "project-management",
       "Project Management",
