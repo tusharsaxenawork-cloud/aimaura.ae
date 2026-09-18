@@ -1,4 +1,5 @@
 import "./style.css";
+import { ROUTE_BY_PATH, SITE, DEFAULT_OG_IMAGE } from "./seo.js";
 
 /* Newsletter signups are emailed here via formsubmit.co */
 const NEWSLETTER_TO = "info@aimaura.ae";
@@ -192,12 +193,12 @@ const SERVICES = {
 /* ------------------------------------------------------------------ */
 
 const serviceLinks = Object.entries(SERVICES)
-  .map(([slug, s]) => `<a href="#/services/${slug}">${s.title}</a>`)
+  .map(([slug, s]) => `<a href="/services/${slug}">${s.title}</a>`)
   .join("");
 
 document.querySelector("#app").innerHTML = `
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="Aimaura — home">
+    <a class="brand" href="/" aria-label="Aimaura — home">
       ${LOGO}
       <span class="wordmark">Aimaura</span>
     </a>
@@ -208,7 +209,7 @@ document.querySelector("#app").innerHTML = `
         </button>
         <div class="dropdown">${serviceLinks}</div>
       </div>
-      <a href="#about">About</a>
+      <a href="/#about">About</a>
       <button class="nav__contact" type="button">Contact us</button>
     </nav>
     <button class="theme-toggle" aria-label="Switch to light theme">
@@ -236,7 +237,7 @@ document.querySelector("#app").innerHTML = `
     <nav class="site-footer__cols" aria-label="Footer">
       <div>
         <span>Discover</span>
-        <a href="#about">About</a>
+        <a href="/#about">About</a>
       </div>
       <div>
         <span>Services</span>
@@ -287,7 +288,7 @@ document.querySelector("#app").innerHTML = `
           <span class="contact-fab__label">Email the studio<small>${CONTACT.email}</small></span>
           <span class="contact-fab__chevron" aria-hidden="true">›</span>
         </a>
-        <a class="contact-fab__book" href="#newsletter">
+        <a class="contact-fab__book" href="/#newsletter">
           <span class="contact-fab__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
           </span>
@@ -393,7 +394,7 @@ function homeHTML() {
           creativity, and care. From concept to completion, we shape spaces
           that elevate everyday living and leave a lasting impression.
         </p>
-        <a class="pinned__link" href="#about">Our Story</a>
+        <a class="pinned__link" href="/#about">Our Story</a>
       </div>
       <div class="pinned__scroll">
         ${prologueImages
@@ -409,7 +410,7 @@ function homeHTML() {
     <section class="feature" id="long-talk">
       <div class="feature__head">
         <h2>Conversations That Shape Spaces</h2>
-        <a href="#journal" class="more">All conversations</a>
+        <a href="/#long-talk" class="more">All conversations</a>
       </div>
       <p class="feature__intro">
         Real stories. Honest conversations. Thoughtful design. Explore how we
@@ -420,12 +421,12 @@ function homeHTML() {
         .map(
           (t) => `
         <article class="talk">
-          <a class="talk__media" href="#journal"><img src="${t.src}" alt="${t.title}" loading="lazy" /></a>
+          <a class="talk__media" href="/#long-talk"><img src="${t.src}" alt="${t.title}" loading="lazy" /></a>
           <div class="talk__body">
             <p class="talk__kicker">${t.kicker}</p>
             <h3 class="talk__title">${t.title}</h3>
             <p class="talk__desc">${t.desc}</p>
-            <a class="talk__link" href="#journal"><span class="talk__link-text">Read the conversation</span><span class="talk__link-arrow" aria-hidden="true">&rarr;</span></a>
+            <a class="talk__link" href="/#long-talk"><span class="talk__link-text">Read the conversation</span><span class="talk__link-arrow" aria-hidden="true">&rarr;</span></a>
           </div>
         </article>`,
         )
@@ -445,7 +446,7 @@ function homeHTML() {
         ${Object.entries(SERVICES)
           .map(
             ([slug, s], i) => `
-          <a class="service" href="#/services/${slug}">
+          <a class="service" href="/services/${slug}">
             <span class="service__num">0${i + 1}</span>
             <h3 class="service__title">${s.title}</h3>
             <p class="service__desc">${s.tagline}</p>
@@ -551,7 +552,7 @@ function homeHTML() {
           lasting value.
         </p>
         <div class="philosophy__links">
-          <a href="#newsletter">Start a project</a>
+          <a href="/#newsletter">Start a project</a>
         </div>
       </div>
     </section>
@@ -644,7 +645,7 @@ function serviceHTML(slug) {
           .map(
             ([k, o]) => `
           <article class="card">
-            <a href="#/services/${k}">
+            <a href="/services/${k}">
               <div class="card__media"><img src="${o.image}" alt="${o.title}" loading="lazy" /></div>
               <p class="card__kicker">Services</p>
               <h3 class="card__title">${o.title}</h3>
@@ -811,36 +812,63 @@ function bindPage() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Router: "#/services/<slug>" renders a page, "#<id>" scrolls home    */
+/* Router: real paths via the History API.                             */
+/*   "/services/<slug>" renders a service page (prerendered on disk),   */
+/*   "/" renders home, and a trailing "#<id>" scrolls to a section.     */
 /* ------------------------------------------------------------------ */
 
 let currentView = "";
 
-function route() {
-  const h = location.hash;
-  const svcMatch = h.match(/^#\/services\/([\w-]+)$/);
+function viewForPath(pathname) {
+  const m = pathname.match(/^\/services\/([\w-]+)\/?$/);
+  if (m && SERVICES[m[1]]) return { key: `service:${m[1]}`, slug: m[1] };
+  return { key: "home" };
+}
 
-  if (svcMatch && SERVICES[svcMatch[1]]) {
-    const view = `service:${svcMatch[1]}`;
-    if (currentView !== view) {
-      currentView = view;
-      page.innerHTML = serviceHTML(svcMatch[1]);
-      bindPage();
-    }
-    window.scrollTo(0, 0);
-  } else {
-    if (currentView !== "home") {
-      currentView = "home";
-      page.innerHTML = homeHTML();
-      bindPage();
-    }
-    const id = h.replace(/^#\/?/, "");
-    if (id) {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    } else {
-      window.scrollTo(0, 0);
-    }
+/* Swap only the inner #page markup when the view actually changes, so
+   returning to a section anchor on the current page never re-renders.
+   Content is author-controlled template output (see homeHTML/serviceHTML);
+   no user input reaches innerHTML. */
+function render(pathname) {
+  const view = viewForPath(pathname);
+  if (currentView !== view.key) {
+    currentView = view.key;
+    const markup = view.slug ? serviceHTML(view.slug) : homeHTML();
+    page.innerHTML = markup; // trusted static markup, same pattern as the shell
+    bindPage();
   }
+}
+
+/* Keep <title>/description/canonical/OG in sync during client-side nav.
+   The prerendered HTML is already correct on first paint; this covers SPA
+   navigation and JS-rendering crawlers. */
+function applyMeta(pathname) {
+  const meta = ROUTE_BY_PATH[pathname] || ROUTE_BY_PATH["/"];
+  document.title = meta.title;
+  const canonical = `${SITE.origin}${pathname === "/" ? "/" : pathname}`;
+  const set = (sel, attr, val) =>
+    document.head.querySelector(sel)?.setAttribute(attr, val);
+  const image = meta.image || DEFAULT_OG_IMAGE;
+  set('meta[name="description"]', "content", meta.description);
+  set('meta[property="og:title"]', "content", meta.title);
+  set('meta[property="og:description"]', "content", meta.description);
+  set('meta[property="og:url"]', "content", canonical);
+  set('meta[property="og:image"]', "content", image.url);
+  set('meta[property="og:image:width"]', "content", String(image.width));
+  set('meta[property="og:image:height"]', "content", String(image.height));
+  set('meta[property="og:image:alt"]', "content", image.alt);
+  set('meta[name="twitter:image"]', "content", image.url);
+  set('meta[name="twitter:image:alt"]', "content", image.alt);
+  set('link[rel="canonical"]', "href", canonical);
+}
+
+function navigate(pathname, hash, { scroll = true } = {}) {
+  render(pathname);
+  applyMeta(pathname);
+  const id = (hash || "").replace(/^#/, "");
+  const target = id && document.getElementById(id);
+  if (target) target.scrollIntoView({ behavior: "smooth" });
+  else if (scroll) window.scrollTo(0, 0);
 
   header.classList.remove("is-open");
   toggle.setAttribute("aria-expanded", "false");
@@ -934,5 +962,41 @@ const onScroll = () =>
 window.addEventListener("scroll", onScroll, { passive: true });
 onScroll();
 
-window.addEventListener("hashchange", route);
-route();
+/* Intercept internal links so clean "/services/<slug>" URLs route via the
+   History API instead of triggering a full page load. External links,
+   new-tab links, downloads and mailto:/tel: pass straight through. */
+document.addEventListener("click", (e) => {
+  if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey) return;
+  const a = e.target.closest("a");
+  if (!a) return;
+  const href = a.getAttribute("href");
+  if (!href) return;
+  if (a.target === "_blank" || a.hasAttribute("download")) return;
+  if (/^(mailto:|tel:)/i.test(href)) return;
+
+  const url = new URL(href, location.href);
+  if (url.origin !== location.origin) return; // different site
+
+  e.preventDefault();
+  if (url.pathname === location.pathname) {
+    /* Same page — just move the hash and smooth-scroll to the section. */
+    history.pushState(null, "", url.pathname + url.hash);
+    if (url.hash)
+      document
+        .getElementById(url.hash.slice(1))
+        ?.scrollIntoView({ behavior: "smooth" });
+    else window.scrollTo({ top: 0, behavior: "smooth" });
+  } else {
+    history.pushState(null, "", url.pathname + url.hash);
+    navigate(url.pathname, url.hash);
+  }
+});
+
+/* Back/forward buttons. */
+window.addEventListener("popstate", () =>
+  navigate(location.pathname, location.hash),
+);
+
+/* First paint: render the view for the real path the page was served at,
+   without stealing the scroll position the browser already restored. */
+navigate(location.pathname, location.hash, { scroll: false });
