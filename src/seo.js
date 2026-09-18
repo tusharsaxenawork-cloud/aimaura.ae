@@ -37,7 +37,6 @@ const ogImage = (id, alt) => ({
   width: 1200,
   height: 630,
 });
-
 /* Organization schema — referenced by every Service via @id so the graph
    ties back to one business entity. */
 export const ORG_JSONLD = {
