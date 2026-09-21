@@ -92,99 +92,149 @@ const mosaic = [
 const SERVICES = {
   "interior-design": {
     title: "Interior Design & Fit-Out",
-    tagline: "Where thoughtful design meets effortless living.",
+    tagline: "Where thoughtful <strong>interior design</strong> meets effortless living.",
+    pageTitle: "Interior Design & Fit-Out in Dubai",
+    pageTagline: "Where thoughtful design meets effortless living.",
+    summary:
+      "Aimaura is a leading <strong>interior design company</strong> and one of the most trusted <strong>interior fit out companies in Dubai</strong>, delivering <strong>luxury interior design</strong> for residential and commercial spaces across the UAE.",
     image:
       "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2400&q=80",
     intro:
-      "We design interiors that tell a story of purpose, beauty and craftsmanship — then fit them out ourselves, so the finished room matches the drawing that promised it.",
-    body: "From a single room to a whole villa, we begin with how you actually live: where morning light lands, where long dinners happen, where the day winds down. Concept, materials, joinery and finishes are carried through by one team, with every detail delivered with precision and care.",
+      "As an established <strong>interior design company</strong>, we design interiors that tell a story of purpose, beauty and craftsmanship - then fit them out ourselves, so the finished room matches the drawing that promised it. From <strong>villa interior design in Dubai</strong> to <strong>apartment interior design in Dubai</strong>, every project is shaped around how our clients actually live.",
+    body: "From a single room to a whole villa, we begin with how you actually live: where morning light lands, where long dinners happen, where the day winds down. Concept, materials, joinery and finishes are carried through by one team - the same team behind some of Dubai's most sought-after <strong>villa interior design</strong> projects, <strong>apartment interior design</strong> fit-outs, and <strong>commercial interior design in Dubai</strong> developments.",
+    bodyExtra:
+      "As specialists in both <strong>commercial interior design Dubai</strong> and <strong>office interior design Dubai</strong>, we bring the same precision to workplace environments as we do to private homes - every detail delivered with care by a dedicated <strong>interior design company</strong> team.",
     points: [
       "Bespoke residential & commercial interiors",
-      "Complete fit-out & finishing",
+      "Complete fit-out & finishing - trusted among <strong>interior fit out companies in Dubai</strong>",
       "Material, colour & lighting palettes",
       "Custom furniture & joinery design",
       "Art, objects & styling",
     ],
+    ctaText:
+      "Tell us about the place you have - or the one you imagine - and we will walk you through how we would design and build it. Whether it's <strong>villa interior design in Dubai</strong>, <strong>apartment interior design in Dubai</strong>, or <strong>office interior design in Dubai</strong>, Aimaura is the <strong>interior design company</strong> built to deliver <strong>luxury interior design</strong> from concept to completion.",
   },
   "turnkey-design-build": {
     title: "Turnkey Design & Build Solutions",
-    tagline: "From inspired ideas to beautifully built space.",
+    tagline: "From inspired ideas to beautifully built spaces.",
+    pageTagline: "From inspired ideas to beautifully built space.",
+    summary:
+      "Aimaura delivers complete <strong>turnkey interior solutions</strong> across the UAE, offering genuine <strong>turnkey interior design services</strong> and end-to-end <strong>turnkey interior fit out</strong> for villas, apartments and commercial spaces - recognized among the leading <strong>turnkey solutions Dubai</strong> has to offer.",
     image:
       "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2400&q=80",
     intro:
-      "The gap between a beautiful drawing and a beautiful space is the build. We close it by building what we design ourselves — one team, one contract, one point of responsibility.",
-    body: "Turnkey means you hand us a key at the start and we hand it back at the end. Design, approvals, structure, MEP, finishes, joinery, furniture, the last door handle — sequenced by one team, priced transparently, and finished to the standard the drawings promised.",
+      "The gap between a beautiful drawing and a beautiful space is the build. We close it by building what we design ourselves - one team, one contract, one point of responsibility. This is the foundation of true <strong>turnkey interiors</strong>: no handoffs, no gaps, no second contractor undoing what the first one promised.",
+    introExtra:
+      "As specialists in <strong>turnkey interior design services</strong>, our <strong>turnkey interior fit out</strong> process means design and execution never fall into different hands. It's this single-team model that defines Aimaura's approach to <strong>turnkey interior solutions</strong>.",
+    body: "Turnkey means you hand us a key at the start and we hand it back at the end. Design, approvals, structure, MEP, finishes, joinery, furniture, the last door handle - sequenced by one team, priced transparently, and finished to the standard the drawings promised.",
+    bodyExtra:
+      "This end-to-end delivery is what makes our <strong>turnkey interior design services</strong> and <strong>turnkey interior fit out</strong> capability among the most complete of any <strong>turnkey solutions Dubai</strong> provider. Every <strong>turnkey interiors</strong> project runs on one schedule, one budget, and one accountable team - the standard our <strong>turnkey interior solutions</strong> are built on.",
     points: [
-      "Complete design & build delivery",
-      "Villa construction & extension",
+      "Complete design & build delivery - genuine <strong>turnkey interiors</strong> from one team",
+      "Villa construction & extension, delivered as part of our <strong>turnkey interior solutions</strong>",
       "Authority approvals across the UAE",
       "Transparent costing & scheduling",
-      "Snagging, handover & aftercare",
+      "Snagging, handover & aftercare - completing our <strong>turnkey interior fit out</strong> promise",
     ],
+    ctaLabel: "",
+    ctaTitle: "Elevate Your Space, <em>Slowly</em>.",
+    ctaText:
+      "Tell us about the place you have - or the one you imagine - and we will walk you through how we would design and build it, with the <strong>turnkey interior design services</strong>, <strong>turnkey interiors</strong> expertise, and <strong>turnkey solutions Dubai</strong> clients return to for a single, seamless journey from concept to key handover.",
   },
   "landscape-design": {
     title: "Landscape Design & Outdoor Living",
-    tagline: "Bringing nature closer to the way you live.",
+    tagline:
+      "Bring nature closer to the way you live, with <strong>landscape architecture design</strong> tailored for Dubai's climate and lifestyle.",
+    pageTagline: "Bringing nature closer to the way you live.",
+    summary:
+      "Aimaura is one of the most trusted <strong>landscaping companies in Dubai</strong>, offering complete <strong>landscape design</strong>, <strong>garden design</strong>, and <strong>villa landscaping in Dubai</strong> for homes and outdoor spaces across the UAE.",
     image:
       "https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=2400&q=80",
     intro:
-      "The life of a home doesn't stop at its walls. We design and build landscapes, gardens and outdoor rooms that extend the way you live, work and gather into the open air.",
-    body: "From shaded courtyards to full villa gardens, we plan planting, shade, water and light as one composition — built by our own teams and chosen for the climate, so the garden looks better in its fifth summer than its first.",
+      "The life of a home doesn't stop at its walls. We design and build landscapes, gardens and outdoor rooms that extend the way you live, work and gather into the open air. As leading <strong>landscape contractors Dubai</strong> homeowners rely on, our <strong>landscaping services Dubai</strong> cover everything from concept to construction.",
+    body: "From shaded courtyards to full villa gardens, we plan planting, shade, water and light as one composition - built by our own teams and chosen for the climate, so the garden looks better in its fifth summer than its first. This is the standard behind every <strong>garden landscaping Dubai</strong> project we deliver, and why we're recognized among the top <strong>landscaping companies in Dubai</strong>.",
+    bodyExtra:
+      "Our in-house approach to <strong>landscape design</strong> and <strong>garden design</strong> means the same team that plans your <strong>villa landscaping Dubai</strong> project also builds it - with no gap between the drawing and the finished garden. As established <strong>landscape contractors Dubai</strong> clients return to project after project, our <strong>landscaping services Dubai</strong> are built for the long term, not just the handover photos.",
     points: [
-      "Landscape design & masterplanning",
+      "Landscape design & masterplanning - the foundation of every <strong>landscape design</strong> project",
       "Outdoor kitchens, pergolas & terraces",
       "Planting, irrigation & lighting",
       "Water features & shade structures",
-      "Softscape & hardscape construction",
+      "Softscape & hardscape construction - delivered by trusted <strong>landscape contractors Dubai</strong>",
     ],
+    ctaText:
+      "Tell us about the place you have - or the one you imagine - and we will walk you through how we would design and build it, with the <strong>garden design</strong>, <strong>villa landscaping Dubai</strong> expertise, and <strong>landscaping services Dubai</strong> clients trust from one of the leading <strong>landscaping companies in Dubai</strong>.",
   },
   "swimming-pools": {
     title: "Swimming Pool Design & Construction",
-    tagline: "A touch of elegance, shaped in water.",
+    tagline:
+      "A touch of elegance, shaped in water - bespoke pool design and construction across the UAE.",
+    pageTagline: "A touch of elegance, shaped in water.",
+    summary:
+      "Aimaura is a trusted <strong>swimming pool construction company</strong> and one of the leading <strong>swimming pool contractors in Dubai</strong>, offering complete <strong>pool design and construction</strong> for villas and commercial properties across the UAE.",
     image:
       "https://images.unsplash.com/photo-1572331165267-854da2b10ccc?auto=format&fit=crop&w=2400&q=80",
     intro:
-      "A pool is the centrepiece of outdoor living — and the least forgiving thing on a site to build. We design and construct pools where the engineering is as considered as the view across the water.",
-    body: "From infinity edges to compact plunge pools, we handle structure, waterproofing, filtration, heating and finishes as one scope. The result is a pool that is beautiful on day one and effortless to live with for years after.",
+      "A pool is the centrepiece of outdoor living - and the least forgiving thing on a site to build. We design and construct pools where the engineering is as considered as the view across the water. As established <strong>swimming pool builders Dubai</strong> homeowners trust, we bring the same precision to a plunge pool as we do to a full infinity edge.",
+    body: "From infinity edges to compact plunge pools, we handle structure, waterproofing, filtration, heating and finishes as one scope. The result is a pool that is beautiful on day one and effortless to live with for years after. This is the standard behind every <strong>pool design and construction</strong> project we deliver, and why we're recognized among the top <strong>swimming pool contractors in Dubai</strong>.",
+    bodyExtra:
+      "As a full-service <strong>swimming pool construction company</strong>, our in-house team also works as one of the region's dependable <strong>pool renovation companies</strong>, restoring ageing pools to the same standard as a new build. Our reputation among <strong>swimming pool builders Dubai</strong> clients return to is built on this - one team across design, construction and renovation.",
     points: [
-      "Bespoke pool design & engineering",
-      "New construction & pool renovation",
+      "Bespoke pool design & engineering - the foundation of every <strong>pool design and construction</strong> project",
+      "New construction & pool renovation - trusted among <strong>pool renovation companies</strong> in the UAE",
       "Infinity, lap & plunge pools",
       "Filtration, heating & automation",
-      "Decking, surrounds & landscaping",
+      "Decking, surrounds & landscaping - completed by our own <strong>swimming pool contractors in Dubai</strong>",
     ],
+    ctaText:
+      "Tell us about the place you have - or the one you imagine - and we will walk you through how we would design and build it, with the <strong>pool design and construction</strong> expertise, and <strong>swimming pool builders Dubai</strong> and <strong>swimming pool contractors in Dubai</strong> clients trust from an established <strong>swimming pool construction company</strong>.",
   },
   "renovation-remodeling": {
     title: "Renovation & Remodeling",
     tagline: "A new aura for the spaces you call home.",
+    summary:
+      "Aimaura is a trusted <strong>renovation company Dubai</strong> homeowners rely on, offering complete <strong>villa renovation Dubai</strong>, <strong>apartment renovation Dubai</strong>, and <strong>interior renovation</strong> services across the UAE.",
     image:
       "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=2400&q=80",
     intro:
-      "Some of the best spaces already exist — they just need to be rethought. We renovate and remodel villas, apartments and workplaces, keeping what deserves to stay and rebuilding what doesn't.",
-    body: "Renovation rewards experience: hidden services, structural surprises, the choreography of living through the works. We survey carefully, plan honestly, and run the site tightly — so the disruption is short and the transformation is lasting.",
+      "Some of the best spaces already exist - they just need to be rethought. As a leading <strong>renovation company Dubai</strong> relies on, we renovate and remodel villas, apartments and workplaces, keeping what deserves to stay and rebuilding what doesn't. Every <strong>villa renovation Dubai</strong> and <strong>apartment renovation Dubai</strong> project starts with understanding the space before transforming it. As trusted <strong>home remodeling contractors</strong>, we bring this same care across every scale of project. Our approach to <strong>interior renovation</strong> is never just cosmetic - it's a considered redesign, not a patch-up job.",
+    body: "Renovation rewards experience: hidden services, structural surprises, the choreography of living through the works. We survey carefully, plan honestly, and run the site tightly - so the disruption is short and the transformation is lasting. This is the standard behind every <strong>interior renovation</strong> project we deliver, and why we're recognized among the leading <strong>renovation company Dubai</strong> has to offer.",
+    bodyExtra:
+      "As dependable <strong>home remodeling contractors</strong>, our in-house team handles both <strong>villa renovation Dubai</strong> and <strong>apartment renovation Dubai</strong> work with the same single-team accountability - no handoffs, no gaps, no second contractor undoing what the first one promised.",
     points: [
-      "Full villa & apartment renovation",
-      "Kitchen & bathroom remodeling",
+      "Full villa & apartment renovation - the foundation of every <strong>villa renovation Dubai</strong> and <strong>apartment renovation Dubai</strong> project",
+      "Kitchen & bathroom remodeling, delivered as part of our <strong>interior renovation</strong> scope",
       "Structural alterations & extensions",
       "MEP upgrades & replanning",
-      "Phased works for occupied homes",
+      "Phased works for occupied homes - trusted by clients across our <strong>renovation company Dubai</strong> portfolio",
     ],
+    ctaText:
+      "Tell us about the place you have - or the one you imagine - and we will walk you through how we would design and build it, with the <strong>villa renovation Dubai</strong>, <strong>apartment renovation Dubai</strong>, and <strong>interior renovation</strong> expertise clients trust from an established <strong>renovation company Dubai</strong> and dependable <strong>home remodeling contractors</strong>.",
   },
   "project-management": {
-    title: "Project Management & Consultancy",
-    tagline: "Turning complexity into a seamless journey.",
+    title: "Architecture Consultancy & Project Management",
+    tagline:
+      "Turning complexity into a seamless journey - expert <strong>architecture consultant</strong> services from planning through delivery.",
+    pageTitle: "Project Management & Consultancy",
+    pageTagline: "Turning complexity into a seamless journey.",
+    summary:
+      "Aimaura offers complete <strong>construction project management</strong> and <strong>interior design consultation services</strong>, backed by a team of established <strong>architectural consultants in Dubai</strong> and a dedicated <strong>interior design consultant</strong> for every project.",
     image:
       "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2400&q=80",
     intro:
-      "Great projects are managed, not hoped for. We act as your representative — coordinating designers, contractors and authorities so quality, cost and time are protected from concept to completion.",
-    body: "Whether we're delivering the project or overseeing another team's work, the discipline is the same: clear scope, honest budgets, tight programmes and relentless attention to detail. You get one accountable partner and no surprises at handover.",
+      "Great projects are managed, not hoped for. As trusted <strong>architectural consultants in Dubai</strong>, we act as your representative - coordinating designers, contractors and authorities so quality, cost and time are protected from concept to completion. Our <strong>construction project management</strong> approach brings the same discipline to execution as we do to design. Every engagement is backed by a dedicated <strong>interior design consultant</strong> and complete <strong>interior design consultation services</strong>. This is what makes Aimaura one of the most reliable <strong>architectural consultants in Dubai</strong> for complex projects.",
+    body: "Whether we're delivering the project or overseeing another team's work, the discipline is the same: clear scope, honest budgets, tight programmes and relentless attention to detail. You get one accountable partner and no surprises at handover. This is the standard behind every <strong>construction project management</strong> engagement we take on, and why we're recognized among the leading <strong>architectural consultants in Dubai</strong>.",
+    bodyExtra:
+      "As a dedicated <strong>interior design consultant</strong> to our clients, our <strong>interior design consultation services</strong> extend beyond aesthetics into cost, programme and quality control - the same rigor that defines our work as <strong>architectural consultants in Dubai</strong> across the UAE.",
     points: [
-      "End-to-end project management",
-      "Design review & value engineering",
+      "End-to-end project management - the core of our <strong>construction project management</strong> offering",
+      "Design review & value engineering, guided by our <strong>interior design consultant</strong> team",
       "Tendering & contractor selection",
       "Cost, programme & quality control",
-      "Owner representation & consultancy",
+      "Owner representation & consultancy - delivered through our <strong>interior design consultation services</strong>",
     ],
+    ctaText:
+      "Tell us about the place you have - or the one you imagine - and we will walk you through how we would design and build it, with the <strong>construction project management</strong>, <strong>interior design consultation services</strong>, and <strong>interior design consultant</strong> expertise clients trust from established <strong>architectural consultants in Dubai</strong>.",
   },
 };
 
@@ -330,9 +380,7 @@ function homeHTML() {
       </div>
       <div class="hero__overlay">
         <h1 class="hero__headline">
-          <span class="hero__kicker">Aimaura — Design and Build</span>
-          <span>Built with Purpose</span>
-          <span class="hero__headline-alt">Designed with <em>Aura</em></span>
+          <span>Leading Interior Design Companies in Dubai</span>
         </h1>
       </div>
       <button class="hero__arrow hero__arrow--prev" aria-label="Previous slide">&#8592;</button>
@@ -352,11 +400,13 @@ function homeHTML() {
     <section class="cta" id="contact">
       <p class="cta__label">Design. Build. Deliver.</p>
       <h2 class="cta__title">
-        We design spaces that inspire<br /><em>and build experiences that last.</em>
+        Where Timeless Design<br /><em>Meets Masterful Craft</em>
       </h2>
       <p class="cta__text">
-        From concept to completion, we create timeless interiors and exteriors
-        with precision, passion and purpose.
+        Aimaura is one of the most trusted <strong>interior companies in Dubai</strong>,
+        delivering end-to-end architecture, <strong>interior design</strong>, and build
+        solutions for homes and commercial spaces across the UAE. From concept to
+        completion, we design spaces that inspire and build experiences that last.
       </p>
       <a class="cta__button" href="mailto:info@aimaura.ae">Book a consultation &#8594;</a>
     </section>
@@ -371,13 +421,21 @@ function homeHTML() {
 
     <section class="intention intention--center">
       <p class="intention__lead">
-        Crafting spaces.<br />Creating <em>experiences.</em>
+        Crafting Spaces.<br />Creating <em>Experiences.</em>
       </p>
       <p class="intention__body">
-        Aimaura is a multidisciplinary design and build studio specializing in
-        interiors, landscapes, swimming pools, and turnkey projects. Every
-        project is carefully designed, expertly built, and thoughtfully
-        finished to inspire the way people live, work, and connect.
+        As one of the top <strong>interior companies in Dubai</strong>, Aimaura is a
+        multidisciplinary design and build studio specializing in <strong>interior
+        design</strong>, <strong>architecture consultant</strong> services, <strong>landscape
+        architecture design</strong>, swimming pool construction, and turnkey project
+        delivery. Every project is carefully designed, expertly built, and
+        thoughtfully finished - shaping the way people live, work, and connect.
+      </p>
+      <p class="intention__body">
+        Whether you're searching for the <strong>best interior design in Dubai</strong>
+        for a private residence or a full-scale <strong>architecture consultant</strong>
+        for a commercial development, Aimaura brings precision, creativity, and
+        craftsmanship to every square foot.
       </p>
     </section>
 
@@ -387,12 +445,13 @@ function homeHTML() {
         <p class="pinned__label">The Foundation</p>
         <h2 class="pinned__title">Where Vision Becomes Reality</h2>
         <p class="pinned__text">
-          Aimaura was built on one simple belief: every space should tell a
-          story of purpose, beauty, and craftsmanship. We create timeless
-          interiors, inspiring landscapes, luxurious swimming pools, and
-          complete turnkey projects, delivering every detail with precision,
-          creativity, and care. From concept to completion, we shape spaces
-          that elevate everyday living and leave a lasting impression.
+          Aimaura was built on one simple belief: every space should tell a story
+          of purpose, beauty, and craftsmanship. As one of the established
+          <strong>interior companies in Dubai</strong>, we create timeless interiors,
+          inspiring <strong>landscape architecture design</strong>, luxurious swimming
+          pools, and complete turnkey projects - delivering every detail with
+          precision, creativity, and care. From concept to completion, we shape
+          spaces that elevate everyday living and leave a lasting impression.
         </p>
         <a class="pinned__link" href="/#about">Our Story</a>
       </div>
@@ -436,10 +495,11 @@ function homeHTML() {
     <!-- Services overview -->
     <section class="services" id="services">
       <div class="services__head">
-        <h2>What we do</h2>
+        <h2>What We Do</h2>
         <p>
-          A complete design and build approach for spaces made to be lived
-          in.
+          A complete design and build approach for spaces made to be lived in —
+          delivered by one of Dubai's most versatile <strong>interior companies in
+          Dubai</strong>.
         </p>
       </div>
       <div class="services__grid">
@@ -542,17 +602,22 @@ function homeHTML() {
 
     <section class="philosophy" id="about">
       <div class="philosophy__inner">
-        <p class="philosophy__label">Living well</p>
+        <p class="philosophy__label">Living Well</p>
         <p class="philosophy__text">
-          At Aimaura, we believe exceptional spaces begin with thoughtful
-          design and are brought to life through flawless execution. We
-          specialise in architecture, interior design, landscaping, swimming
-          pools and turnkey project delivery, creating timeless residential
-          and commercial environments that balance beauty, functionality and
-          lasting value.
+          At Aimaura, we believe exceptional spaces begin with thoughtful design
+          and are brought to life through flawless execution. As one of the leading
+          <strong>interior companies in Dubai</strong>, we specialize in architecture,
+          <strong>interior design</strong>, <strong>landscape architecture design</strong>,
+          swimming pools, and turnkey project delivery - creating timeless
+          residential and commercial environments that balance beauty,
+          functionality and lasting value.
+        </p>
+        <p class="philosophy__prompt">
+          Looking for the <strong>best interior design in Dubai</strong> or a dependable
+          <strong>architecture consultant</strong>?
         </p>
         <div class="philosophy__links">
-          <a href="/#newsletter">Start a project</a>
+          <a href="/#newsletter"><strong>Start a project with Aimaura today.</strong></a>
         </div>
       </div>
     </section>
@@ -595,28 +660,33 @@ function homeHTML() {
 function serviceHTML(slug) {
   const s = SERVICES[slug];
   const others = Object.entries(SERVICES).filter(([k]) => k !== slug);
+  const pageTitle = s.pageTitle || s.title;
+  const pageTagline = s.pageTagline || s.tagline;
   return `
   <main id="top">
     <section class="svc-hero">
-      <img src="${s.image}" alt="${s.title}" />
+      <img src="${s.image}" alt="${pageTitle}" />
       <div class="svc-hero__overlay">
         <p class="svc-hero__kicker">Services</p>
-        <h1 class="svc-hero__title">${s.title}</h1>
-        <p class="svc-hero__tagline">${s.tagline}</p>
+        <h1 class="svc-hero__title">${pageTitle}</h1>
+        <p class="svc-hero__tagline">${pageTagline}</p>
+        ${s.summary ? `<p class="svc-hero__summary">${s.summary}</p>` : ""}
       </div>
     </section>
 
     <section class="intention">
-      <p class="intention__label">The approach</p>
+      <p class="intention__label">The Approach</p>
       <p class="intention__lead">${s.intro}</p>
+      ${s.introExtra ? `<p class="intention__lead">${s.introExtra}</p>` : ""}
     </section>
 
     <section class="pinned">
       <div class="pinned__aside">
-        <p class="pinned__label">In practice</p>
-        <h2 class="pinned__title">How we work</h2>
+        <p class="pinned__label">In Practice</p>
+        <h2 class="pinned__title">How We Work</h2>
         <p class="pinned__text">${s.body}</p>
-        <a class="pinned__link" href="mailto:info@aimaura.ae">Start a conversation</a>
+        ${s.bodyExtra ? `<p class="pinned__text">${s.bodyExtra}</p>` : ""}
+        <a class="pinned__link" href="mailto:info@aimaura.ae"><strong>Start a Conversation</strong></a>
       </div>
       <div class="pinned__scroll">
         <ul class="svc-list">
@@ -627,11 +697,10 @@ function serviceHTML(slug) {
     </section>
 
     <section class="cta">
-      <p class="cta__label">Begin</p>
-      <h2 class="cta__title">Elevate your space, <em>slowly</em>.</h2>
+      ${s.ctaLabel === "" ? "" : `<p class="cta__label">${s.ctaLabel || "Begin"}</p>`}
+      <h2 class="cta__title">${s.ctaTitle || "Elevate your space, <em>slowly</em>."}</h2>
       <p class="cta__text">
-        Tell us about the place you have — or the one you imagine — and we will
-        walk you through how we would design and build it.
+        ${s.ctaText || "Tell us about the place you have — or the one you imagine — and we will walk you through how we would design and build it."}
       </p>
       <a class="cta__button" href="mailto:info@aimaura.ae">Book a consultation</a>
     </section>

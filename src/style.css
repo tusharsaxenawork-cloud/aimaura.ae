@@ -456,7 +456,7 @@ a {
 
 .hero__headline span {
   display: block;
-  font-size: clamp(2.8rem, 8.8vw, 7rem);
+  font-size: clamp(2.2rem, 6vw, 5rem);
 }
 
 .hero__headline-alt {
@@ -754,6 +754,10 @@ a {
 .intention__lead em {
   font-style: italic;
   color: var(--terra-soft);
+}
+
+.intention__lead + .intention__lead {
+  margin-top: 24px;
 }
 
 .intention__body {
@@ -1269,11 +1273,18 @@ a {
 }
 
 .philosophy__text {
-  margin: 0 0 40px;
+  margin: 0 0 24px;
   font-family: var(--serif);
   font-size: clamp(1.4rem, 2.6vw, 2.1rem);
   font-weight: 400;
   line-height: 1.45;
+}
+
+.philosophy__prompt {
+  margin: 0 0 32px;
+  max-width: 60ch;
+  line-height: 1.65;
+  color: var(--cream-soft);
 }
 
 .philosophy__links {
@@ -1638,6 +1649,13 @@ a {
 .svc-hero__tagline {
   margin: 18px 0 0;
   max-width: 50ch;
+  color: var(--cream-soft);
+}
+
+.svc-hero__summary {
+  margin: 12px 0 0;
+  max-width: 72ch;
+  line-height: 1.55;
   color: var(--cream-soft);
 }
 
