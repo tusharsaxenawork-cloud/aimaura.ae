@@ -380,7 +380,7 @@ function homeHTML() {
       </div>
       <div class="hero__overlay">
         <h1 class="hero__headline">
-          <span>Leading Interior Design Companies in Dubai</span>
+          <span>Leading Interior Design Company in Dubai</span>
         </h1>
       </div>
       <button class="hero__arrow hero__arrow--prev" aria-label="Previous slide">&#8592;</button>
