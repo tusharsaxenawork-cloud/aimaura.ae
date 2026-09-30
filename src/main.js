@@ -295,7 +295,7 @@ document.querySelector("#app").innerHTML = `
       </div>
       <div>
         <span>Connect</span>
-        <a href="https://www.instagram.com/aimauradesignbuild" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.instagram.com/aimaura_design_build" target="_blank" rel="noopener">Instagram</a>
         <button class="footer-contact" type="button">Contact</button>
       </div>
       <div>
