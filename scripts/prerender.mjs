@@ -1,12 +1,11 @@
 /*
  * Post-build prerender.
  *
- * Vite emits a single dist/index.html (the SPA shell). This script clones that
- * shell once per route and rewrites the block between the <!-- seo:start --> /
- * <!-- seo:end --> markers with route-specific <title>, description, canonical,
- * Open Graph tags and JSON-LD. The result is a real HTML file per URL, served
- * by GitHub Pages with a 200 status and correct metadata even to scrapers that
- * never run JavaScript. It also generates sitemap.xml from the same route list.
+ * Vite emits a single dist/index.html shell. This script clones that shell once
+ * per route, adds route-specific metadata, and injects the complete header,
+ * navigation, page content, and footer. The result is a real HTML document per
+ * URL that remains meaningful without JavaScript. It also generates sitemap.xml
+ * from the same route list and validates each generated page before deployment.
  *
  * Run automatically via `npm run build` (vite build && node scripts/prerender.mjs).
  */
@@ -14,10 +13,17 @@ import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { ROUTES, SITE, DEFAULT_OG_IMAGE } from "../src/seo.js";
+import {
+  SERVICES,
+  homeHTML,
+  serviceHTML,
+  shellHTML,
+} from "../src/main.js";
 
 const dist = join(dirname(fileURLToPath(import.meta.url)), "..", "dist");
 const START = "<!-- seo:start -->";
 const END = "<!-- seo:end -->";
+const EMPTY_APP = '<div id="app"></div>';
 
 /* Escape a value for use inside an HTML attribute. */
 const attr = (s) =>
@@ -71,6 +77,31 @@ const outFileFor = (path) =>
     ? join(dist, "index.html")
     : join(dist, `${path.replace(/^\//, "")}.html`);
 
+function pageHTML(route) {
+  if (route.path === "/") return homeHTML();
+  const slug = route.path.split("/").filter(Boolean).at(-1);
+  if (!SERVICES[slug]) {
+    throw new Error(`No service content found for ${route.path}`);
+  }
+  return serviceHTML(slug);
+}
+
+function validate(route, html) {
+  const h1Count = (html.match(/<h1\b/g) || []).length;
+  const canonical = canonicalFor(route.path);
+  const checks = [
+    [h1Count === 1, `expected one <h1>, found ${h1Count}`],
+    [html.includes("<main"), "missing <main> content"],
+    [html.includes('href="/services/'), "missing crawlable service links"],
+    [html.includes(`<link rel="canonical" href="${canonical}"`), "wrong canonical"],
+    [!html.includes(EMPTY_APP), "empty app shell remains"],
+  ];
+  const failures = checks.filter(([ok]) => !ok).map(([, message]) => message);
+  if (failures.length) {
+    throw new Error(`Invalid static page ${route.path}: ${failures.join(", ")}`);
+  }
+}
+
 async function main() {
   const shellPath = join(dist, "index.html");
   const shell = await readFile(shellPath, "utf8");
@@ -84,9 +115,15 @@ async function main() {
   }
   const before = shell.slice(0, startAt);
   const after = shell.slice(endAt + END.length);
+  if (!shell.includes(EMPTY_APP)) {
+    throw new Error("Empty #app mount not found in dist/index.html");
+  }
 
   for (const route of ROUTES) {
-    const html = before + seoBlock(route) + after;
+    const documentShell = before + seoBlock(route) + after;
+    const app = `<div id="app">${shellHTML(pageHTML(route))}</div>`;
+    const html = documentShell.replace(EMPTY_APP, app);
+    validate(route, html);
     const out = outFileFor(route.path);
     await mkdir(dirname(out), { recursive: true });
     await writeFile(out, html);

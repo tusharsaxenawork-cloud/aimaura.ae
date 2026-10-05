@@ -8,6 +8,11 @@ This repository is set up as a Vite app for GitHub Pages.
 2. Start the dev server with `npm run dev`.
 3. Build production files with `npm run build`.
 
+The production build statically generates the complete HTML for the homepage
+and every service route. JavaScript enhances those documents with navigation,
+forms, sliders, and other interactions; it is not required for search engines
+to read the page content or discover links.
+
 ## GitHub Pages
 
 1. Push the repository to GitHub.

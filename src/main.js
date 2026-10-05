@@ -1,5 +1,8 @@
-import "./style.css";
 import { ROUTE_BY_PATH, SITE, DEFAULT_OG_IMAGE } from "./seo.js";
+
+/* This module is imported by both the browser and the Node prerender step.
+   Keep top-level code DOM-safe so the build can render complete HTML pages. */
+const hasDOM = typeof document !== "undefined";
 
 /* Newsletter signups are emailed here via formsubmit.co */
 const NEWSLETTER_TO = "info@aimaura.ae";
@@ -89,7 +92,7 @@ const mosaic = [
 ];
 
 /* Service pages — content inspired by Zen Interiors, styled like Slowness */
-const SERVICES = {
+export const SERVICES = {
   "interior-design": {
     title: "Interior Design & Fit-Out",
     tagline: "Where thoughtful <strong>interior design</strong> meets effortless living.",
@@ -246,7 +249,7 @@ const serviceLinks = Object.entries(SERVICES)
   .map(([slug, s]) => `<a href="/services/${slug}">${s.title}</a>`)
   .join("");
 
-document.querySelector("#app").innerHTML = `
+export const shellHTML = (pageMarkup = "") => `
   <header class="site-header">
     <a class="brand" href="/" aria-label="Aimaura — home">
       ${LOGO}
@@ -276,7 +279,7 @@ document.querySelector("#app").innerHTML = `
     </button>
   </header>
 
-  <div id="page"></div>
+  <div id="page">${pageMarkup}</div>
 
   <footer class="site-footer">
     <div class="site-footer__brand">
@@ -354,13 +357,20 @@ document.querySelector("#app").innerHTML = `
   </div>
 `;
 
-const page = document.querySelector("#page");
+if (hasDOM) {
+  const app = document.querySelector("#app");
+  /* Development starts from an empty shell. Production pages already contain
+     the complete SSG markup, so preserve it and only bind behaviour below. */
+  if (!app.querySelector("#page")) app.innerHTML = shellHTML();
+}
+
+const page = hasDOM ? document.querySelector("#page") : null;
 
 /* ------------------------------------------------------------------ */
 /* Home page                                                           */
 /* ------------------------------------------------------------------ */
 
-function homeHTML() {
+export function homeHTML() {
   return `
   <main id="top">
     <section class="hero" aria-label="Featured projects">
@@ -657,7 +667,7 @@ function homeHTML() {
 /* Service page                                                        */
 /* ------------------------------------------------------------------ */
 
-function serviceHTML(slug) {
+export function serviceHTML(slug) {
   const s = SERVICES[slug];
   const others = Object.entries(SERVICES).filter(([k]) => k !== slug);
   const pageTitle = s.pageTitle || s.title;
@@ -731,6 +741,7 @@ function serviceHTML(slug) {
 /* Interactions                                                        */
 /* ------------------------------------------------------------------ */
 
+if (hasDOM) {
 let timer = null;
 
 function bindPage() {
@@ -893,6 +904,12 @@ function viewForPath(pathname) {
   if (m && SERVICES[m[1]]) return { key: `service:${m[1]}`, slug: m[1] };
   return { key: "home" };
 }
+
+/* A production document already contains its route's complete static markup.
+   Mark that view as current so first paint only attaches interactions instead
+   of replacing crawler-visible HTML with an identical client render. */
+const hasPrerenderedPage = Boolean(page.querySelector("main"));
+if (hasPrerenderedPage) currentView = viewForPath(location.pathname).key;
 
 /* Swap only the inner #page markup when the view actually changes, so
    returning to a section anchor on the current page never re-renders.
@@ -1068,4 +1085,6 @@ window.addEventListener("popstate", () =>
 
 /* First paint: render the view for the real path the page was served at,
    without stealing the scroll position the browser already restored. */
+if (hasPrerenderedPage) bindPage();
 navigate(location.pathname, location.hash, { scroll: false });
+}
