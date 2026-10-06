@@ -9,8 +9,8 @@ const NEWSLETTER_TO = "info@aimaura.ae";
 
 /* Floating contact widget — whatsapp/phone in international format */
 const CONTACT = {
-  whatsapp: "971566908754",
-  phoneDisplay: "+971 56 690 8754",
+  whatsapp: "971541310081",
+  phoneDisplay: "+971 54 131 0081",
   email: "info@aimaura.ae",
 };
 const WHATSAPP_URL = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(

@@ -49,7 +49,7 @@ export const ORG_JSONLD = {
   image: SITE.ogImage,
   logo: SITE.logo,
   url: `${SITE.origin}/`,
-  telephone: "+971566908754",
+  telephone: "+971541310081",
   email: "info@aimaura.ae",
   address: {
     "@type": "PostalAddress",
